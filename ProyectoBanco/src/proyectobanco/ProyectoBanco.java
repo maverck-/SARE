@@ -26,6 +26,8 @@ public class ProyectoBanco {
 
         /*GestorDatos Legacy = new GestorDatos("DatosSistemaLegacy.xlsx");*/
         GestorDatos legacy = new General("DatosSistemaLegacy.xlsx", "05-ene-2014", "25-jul-2018", 0);
+        legacy = new Histograma(legacy);
+        legacy.informe();
         legacy = new OtrosDatos(legacy);
         legacy.informe();
 
