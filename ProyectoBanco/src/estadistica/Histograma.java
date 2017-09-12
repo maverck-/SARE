@@ -1,41 +1,26 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package estadistica;
 
+import java.io.IOException;
 import java.util.ArrayList;
-import listas.Inversion;
+import proyectobanco.IOExcel;
 import tipoInv.GestorDatos;
 
 /**
  *
  * @author Maver
  */
-public final class Histograma extends Calculos {
-    
-    private int k;
-    private String[][] histograma;
-    private String[][] datos;
-    private String[][] tabla;    
+public class Histograma extends Calculos {  
 
     public Histograma(GestorDatos g) {
-        super(g);
-        datos = new String[7][2];
-        if ((int) Math.sqrt(Filtro().size()) > 15) {
-            k = 15;
-        } else {
-            k = (int) Math.sqrt(Filtro().size());
-        }
-        histograma = new String[k][Filtro().size()];
-        tabla = new String[k + 1][9];
-        
+        super(g);   
     }
     
     @Override
-    public void informe() {
+    public void informe() throws IOException{
         ArrayList n = Filtro();
+        String[][] tabla = super.getTabla();
+        String[][] histograma = super.getHistograma();
+        int k = super.getK();
 
         tabla[0][0] = "N° clase";
         tabla[0][1] = "Límites intervalos \t";
@@ -92,11 +77,17 @@ public final class Histograma extends Calculos {
             System.out.println("");
         }
         System.out.println("");
+        super.getgDatos().getArchivo().SalidaExcel(tabla,null);
     }
 
     @Override
     public ArrayList Filtro() {
         return super.getgDatos().Filtro();
+    }
+
+    @Override
+    public IOExcel getArchivo() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

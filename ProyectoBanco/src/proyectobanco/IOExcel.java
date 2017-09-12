@@ -84,7 +84,7 @@ public class IOExcel {
 
     public void SalidaExcel(String[][] p, String[][] q) {
         XSSFWorkbook libro = new XSSFWorkbook();
-        XSSFSheet hoja = libro.createSheet("Informe Estadístico");
+        /*XSSFSheet hoja = libro.createSheet("Informe Estadístico");
         for (int i = 0; i < p.length; i++) {
             XSSFRow fila = hoja.createRow(i);
             for (int j = 0; j < p[0].length; j++) {
@@ -101,7 +101,7 @@ public class IOExcel {
                 hoja.autoSizeColumn(j);
             }
 
-        }
+        }*/
         XSSFSheet hoja1 = libro.createSheet("Otras Medidas");
         for (int i = 0; i < q.length; i++) {
             XSSFRow fila = hoja1.createRow(i);

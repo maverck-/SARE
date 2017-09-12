@@ -13,7 +13,7 @@ public abstract class Calculos extends GestorDatos {
 
     private GestorDatos gDatos;
 
-    /*private double Varianza;
+    private double Varianza;
     private double Esperanza;
     private double Mediana;
     private double Moda;
@@ -23,29 +23,68 @@ public abstract class Calculos extends GestorDatos {
     private int k;
     private String[][] histograma;
     private String[][] datos;
-    private String[][] tabla;*/
+    private String[][] tabla;
+    private ArrayList lista;
 
     public Calculos(GestorDatos g) {
         gDatos = g;
-        /*datos = new String[7][2];
+        datos = new String[7][2];
         if ((int) Math.sqrt(gDatos.Filtro().size()) > 15) {
             k = 15;
         } else {
             k = (int) Math.sqrt(gDatos.Filtro().size());
         }
         histograma = new String[k][gDatos.Filtro().size()];
-        tabla = new String[k + 1][9];*/
-    }
-
-    public GestorDatos getgDatos() {
-        return gDatos;
+        tabla = new String[k + 1][9];
+        lista = gDatos.Filtro();
     }
     
-    protected int Get(ArrayList e, int i) {
-        return ((Inversion) e.get(i)).getMontoI();
+    protected void Esperanza() {
+        double suma = 0;
+        for (int i = 0; i < lista.size(); i++) {
+            suma += Get(lista, i);
+        }
+        Esperanza = suma / lista.size();
+        datos[0][1] = Esperanza + "";
     }
 
-    /*protected int getK() {
+    protected void Moda() {
+        Moda = 0;
+
+        datos[3][1] = Moda + "";
+        MediaT = 0;
+        datos[6][1] = MediaT + "";
+    }
+
+    protected void Mediana() {
+        if (lista.size() % 2 == 0) {
+            Mediana = Get(lista, lista.size() / 2) + Get(lista, lista.size() / 2 - 1);
+            datos[2][1] = Mediana + "";
+            return;
+        }
+        Mediana = Get(lista, (int) lista.size() / 2);
+        datos[2][1] = Mediana + "";
+    }
+
+    protected double Varianza() {
+        double preVarianza = 0.0;
+        for (int x = 0; x < lista.size(); x++) {
+            preVarianza += (Get(lista, x) - Esperanza) * (Get(lista, x) - Esperanza);
+        }
+        Varianza = preVarianza / (lista.size());
+        datos[1][1] = Varianza + "";
+        desviacion = Math.sqrt(Varianza);
+        datos[4][1] = desviacion + "";
+        coefVar = desviacion / Esperanza;
+        datos[5][1] = coefVar + "";
+        return Varianza;
+    }
+
+    protected GestorDatos getgDatos() {
+        return gDatos;
+    }
+
+    protected int getK() {
         return k;
     }
 
@@ -60,6 +99,39 @@ public abstract class Calculos extends GestorDatos {
     protected String[][] getTabla() {
         return tabla;
     }
+    
+    protected double getVarianza() {
+        return Varianza;
+    }
+
+    protected double getEsperanza() {
+        return Esperanza;
+    }
+
+    protected double getMediana() {
+        return Mediana;
+    }
+
+    protected double getModa() {
+        return Moda;
+    }
+
+    protected double getDesviacion() {
+        return desviacion;
+    }
+
+    protected double getCoefVar() {
+        return coefVar;
+    }
+
+    protected double getMediaT() {
+        return MediaT;
+    }
+    /*
+    protected int Get(ArrayList e, int i) {
+        return ((Inversion) e.get(i)).getMontoI();
+    }
+    
     public Calculos(GestorDatos g) {
         datos = new String[7][2];
         if ((int) Math.sqrt(g.FiltrarFecha().size()) > 15) {
@@ -69,9 +141,9 @@ public abstract class Calculos extends GestorDatos {
         }
         histograma = new String[k][g.FiltrarFecha().size()];
         tabla = new String[k + 1][9];
-    }*/
+    }
 
- /*public String[][] otrosDatos(ArrayList lista) {
+    public String[][] otrosDatos(ArrayList lista) {
         datos[0][0] = "Esperanza: \t\t\t";
         Esperanza(lista);
 
@@ -177,7 +249,4 @@ public abstract class Calculos extends GestorDatos {
         return tabla;
     }*/
 
-    String[][] getDatos() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 }

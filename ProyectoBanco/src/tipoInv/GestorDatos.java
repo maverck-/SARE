@@ -1,33 +1,29 @@
 package tipoInv;
 
-/**
- * @author Eduardo
- */
-
+import java.io.IOException;
 import listas.Inversion;
 import java.util.*;
+import proyectobanco.IOExcel;
 
 public abstract class GestorDatos {
-    
-    /*private Lista datos;
-    private ArrayList filtroFecha;
-    private ArrayList[] filtroTipo;*/
-    
-    public abstract void informe();
+
+    public abstract void informe() throws IOException;
+
     public abstract ArrayList Filtro();
-    
+
+    public abstract IOExcel getArchivo();
+
     protected void quickSort(ArrayList e, int izq, int der) {
-        int x = ((Inversion) e.get(izq)).getMontoI();
         Inversion piv = (Inversion) e.get(izq);
-        int pivote = x;
+        int pivote = Get(e, izq);
         int i = izq;
         int j = der;
         Inversion auxIntercambio;
         while (i < j) {
-            while (x <= pivote && i < j) {
+            while (Get(e, i) <= pivote && i < j) {
                 i++;
             }
-            while (x > pivote) {
+            while (Get(e, j) > pivote) {
                 j--;
             }
             if (i < j) {
@@ -44,8 +40,8 @@ public abstract class GestorDatos {
         if (j + 1 < der) {
             quickSort(e, j + 1, der);
         }
-    }    
-    
+    }
+
     protected Date ConvertirFecha(String fecha) {
         if (fecha == null) {
             return null;
@@ -137,7 +133,11 @@ public abstract class GestorDatos {
         Date nfecha = new Date(Integer.parseInt(nuevaF[2]) - 1900, Integer.parseInt(nuevaF[1]), Integer.parseInt(nuevaF[0]));
         return nfecha;
     }
-    
+
+    protected int Get(ArrayList e, int i) {
+        return ((Inversion) e.get(i)).getMontoI();
+    }
+
     /*protected ArrayList Filtro(String ini, String fin, int tip){
         Date i = ConvertirFecha(ini);
         Date f = ConvertirFecha(fin);
@@ -254,7 +254,7 @@ public abstract class GestorDatos {
         return ((Inversion) e.get(i)).getMontoI();
     }*/
 
-    /*protected void MostrarDatosTabla(String[][] tabla) {
+ /*protected void MostrarDatosTabla(String[][] tabla) {
         for (int i = 0; i < tabla.length; i++) {
             for (int j = 0; j < tabla[0].length; j++) {
                 try {
@@ -317,5 +317,4 @@ public abstract class GestorDatos {
         }
         System.out.println("");
     }*/
-
 }

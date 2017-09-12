@@ -9,10 +9,9 @@ package proyectobanco;
  *
  * @author Eduardo
  */
-import estadistica.Histograma;
+import estadistica.*;
 import listas.NoDato;
 import java.io.*;
-import java.util.Date;
 import tipoInv.General;
 import tipoInv.GestorDatos;
 //import java.util.*;
@@ -27,7 +26,7 @@ public class ProyectoBanco {
 
         /*GestorDatos Legacy = new GestorDatos("DatosSistemaLegacy.xlsx");*/
         GestorDatos legacy = new General("DatosSistemaLegacy.xlsx", "05-ene-2014", "25-jul-2018", 0);
-        legacy = new Histograma(legacy);
+        legacy = new OtrosDatos(legacy);
         legacy.informe();
 
     }
