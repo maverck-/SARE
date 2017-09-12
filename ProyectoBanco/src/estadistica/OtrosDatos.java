@@ -30,7 +30,7 @@ public class OtrosDatos extends Calculos {
         d[2][0] = "Mediana: \t\t\t";
         super.Mediana();
 
-        d[3][0] = "Moda: \t\t\t\t";
+        d[3][0] = "Total de datos: \t\t\t\t";
         super.Moda();
 
         d[6][0] = "Media truncada: \t\t";

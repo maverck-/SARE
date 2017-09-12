@@ -25,7 +25,7 @@ public class ProyectoBanco {
         // TODO code application logic here
 
         /*GestorDatos Legacy = new GestorDatos("DatosSistemaLegacy.xlsx");*/
-        GestorDatos legacy = new General("DatosSistemaLegacy.xlsx", "01-ene-2013", "25-dic-2019", "GR"); //Tipo: GR=General, FM=Fondos Mutuos, etc.
+        GestorDatos legacy = new General("DatosSistemaLegacy.xlsx", "31-dic-2014", "25-dic-2019", "FM"); //Tipo: GR=General, FM=Fondos Mutuos, etc.
         legacy = new OtrosDatos(legacy);
         legacy.informe();
         legacy = new Histograma(legacy);

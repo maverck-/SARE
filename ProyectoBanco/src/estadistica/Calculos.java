@@ -49,7 +49,7 @@ public abstract class Calculos extends GestorDatos {
     }
 
     protected void Moda() {
-        Moda = 0;
+        Moda = (double)gDatos.Filtro().size();
 
         datos[3][1] = Moda + "";
         MediaT = 0;
