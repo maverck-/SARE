@@ -21,18 +21,18 @@ public class OtrosDatos extends Calculos {
         String[][] d = super.getDatos();
         
         d[0][0] = "Esperanza: \t\t\t";
-        super.getEsperanza();
+        super.Esperanza();
 
         d[1][0] = "Varianza: \t\t\t";
         d[4][0] = "Desviación estandar:\t\t";
         d[5][0] = "Coeficiente de variación: \t";
-        super.getVarianza();
+        super.Varianza();
 
         d[2][0] = "Mediana: \t\t\t";
-        super.getMediana();
+        super.Mediana();
 
         d[3][0] = "Moda: \t\t\t\t";
-        super.getModa();
+        super.Moda();
 
         d[6][0] = "Media truncada: \t\t";
 
@@ -50,7 +50,7 @@ public class OtrosDatos extends Calculos {
         }
         System.out.println("");
         
-        super.getgDatos().getArchivo().SalidaExcel(null,d);
+        super.getgDatos().getArchivo().SalidaExcel(null,d); //de momento escribe solo esta tabla en el excel!!! - La idea es inicializar la escrituara de excel de otra forma para poder agregar libremente hojas
     }   
 
     @Override
