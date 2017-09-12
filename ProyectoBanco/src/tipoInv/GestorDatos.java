@@ -7,7 +7,7 @@ import proyectobanco.IOExcel;
 
 public abstract class GestorDatos {
 
-    public abstract void informe() throws IOException;
+    public abstract void informe();
 
     public abstract ArrayList Filtro();
 
@@ -138,23 +138,71 @@ public abstract class GestorDatos {
         return ((Inversion) e.get(i)).getMontoI();
     }
 
-    /*protected ArrayList Filtro(String ini, String fin, int tip){
+    /*protected ArrayList Filtro() {
         Date i = ConvertirFecha(ini);
         Date f = ConvertirFecha(fin);
         ArrayList entrega = new ArrayList();
+        ArrayList[] filtroTipo = new ArrayList[4];
+        filtroTipo[0] = new ArrayList();
+        filtroTipo[1] = new ArrayList();
+        filtroTipo[2] = new ArrayList();
+        filtroTipo[3] = new ArrayList();
+
         datos.setFirst();
         while (!datos.eol()) {
             if (((Inversion) datos.currValue()).getFechas().getInicio().after(i)
                     && ((Inversion) datos.currValue()).getFechas().getFinal().before(f)) {
-                entrega.add(datos.currValue());
+                if (tip.equals("GR")) {
+                    entrega.add(datos.currValue());
+                } else {
+                    switch (((Inversion) datos.currValue()).getTipo()) {
+                        case "DF":
+                            filtroTipo[0].add(datos.currValue());
+                            break;
+                        case "FM":
+                            filtroTipo[1].add(datos.currValue());
+                            break;
+                        case "FI":
+                            filtroTipo[2].add(datos.currValue());
+                            break;
+                        case "BO":
+                            filtroTipo[3].add(datos.currValue());
+                            break;
+                        default:
+                            throw new AssertionError();
+                    }
+                }
+
             }
             datos.next();
         }
-        quickSort(entrega, 0, entrega.size() - 1);
-        
-        if (true) {
-            
+        if (tip.equals("GR")) {
+            quickSort(entrega, 0, entrega.size() - 1);
+        } else {
+            switch (tip) {
+                case "DF":
+                    quickSort(filtroTipo[0], 0, filtroTipo[0].size() - 1);
+                    break;
+                case "FM":
+                    quickSort(filtroTipo[0], 0, filtroTipo[0].size() - 1);
+                    break;
+                case "FI":
+                    quickSort(filtroTipo[0], 0, filtroTipo[0].size() - 1);
+                    break;
+                case "BO":
+                    quickSort(filtroTipo[0], 0, filtroTipo[0].size() - 1);
+                    break;
+                default:
+                    throw new AssertionError();
+            }
         }
+
+        return entrega;
+    }
+        /*if (true) {
+
+        }
+
         //4 tipos
         ArrayList[] filtroTipo = new ArrayList[4];
         filtroTipo[0] = new ArrayList();
@@ -186,10 +234,10 @@ public abstract class GestorDatos {
         quickSort(filtroTipo[1], 0, filtroTipo[1].size() - 1);
         quickSort(filtroTipo[2], 0, filtroTipo[2].size() - 1);
         quickSort(filtroTipo[3], 0, filtroTipo[3].size() - 1);
-        
+
         return entrega;
     }
-    
+
     /*public ArrayList getFiltroFecha(){
         return filtroFecha;
     }

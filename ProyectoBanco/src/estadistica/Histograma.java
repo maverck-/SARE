@@ -16,7 +16,7 @@ public class Histograma extends Calculos {
     }
     
     @Override
-    public void informe() throws IOException{
+    public void informe(){
         ArrayList n = Filtro();
         String[][] tabla = super.getTabla();
         String[][] histograma = super.getHistograma();

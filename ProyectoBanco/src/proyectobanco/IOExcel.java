@@ -84,7 +84,7 @@ public class IOExcel {
 
     public void SalidaExcel(String[][] p, String[][] q) {
         XSSFWorkbook libro = new XSSFWorkbook();
-        /*XSSFSheet hoja = libro.createSheet("Informe Estadístico");
+        XSSFSheet hoja = libro.createSheet("Informe Estadístico");
         for (int i = 0; i < p.length; i++) {
             XSSFRow fila = hoja.createRow(i);
             for (int j = 0; j < p[0].length; j++) {
@@ -101,7 +101,7 @@ public class IOExcel {
                 hoja.autoSizeColumn(j);
             }
 
-        }*/
+        }
         XSSFSheet hoja1 = libro.createSheet("Otras Medidas");
         for (int i = 0; i < q.length; i++) {
             XSSFRow fila = hoja1.createRow(i);
@@ -115,16 +115,13 @@ public class IOExcel {
                 }
                 hoja1.autoSizeColumn(j);
             }
-
         }
-
         java.util.Date fecha = new Date();
         String[] fechaV = fecha.toString().split(" ");
         String[] fechaVH = fechaV[3].split(":");
         String nfecha = fechaV[2] + "_" + fechaV[1] + "_" + fechaV[5] + "_" + fechaVH[0] + "_" + fechaVH[1] + "_" + fechaVH[2];
-
         try {
-            FileOutputStream elFichero = new FileOutputStream("Informe_" + nfecha + ".xlsx");  
+            FileOutputStream elFichero = new FileOutputStream("Informe_" + nfecha + ".xlsx");
             libro.write(elFichero);
             elFichero.close();
         } catch (Exception e) {

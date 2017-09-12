@@ -16,8 +16,7 @@ public class OtrosDatos extends Calculos {
     }
 
     @Override
-    public void informe() throws IOException {
-        ArrayList l = Filtro();
+    public void informe() {
         String[][] d = super.getDatos();
         
         d[0][0] = "Esperanza: \t\t\t";
@@ -50,7 +49,7 @@ public class OtrosDatos extends Calculos {
         }
         System.out.println("");
         
-        //super.getgDatos().getArchivo().SalidaExcel(null,d); //de momento escribe solo esta tabla en el excel!!! - La idea es inicializar la escrituara de excel de otra forma para poder agregar libremente hojas
+        //super.getgDatos().getArchivo().SalidaExcel(null,d); 
     }   
 
     @Override
