@@ -2,7 +2,7 @@ package estadistica;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import proyectobanco.IOExcel;
+import proyectobanco.IOEstrategia;
 import tipoInv.GestorDatos;
 
 /**
@@ -16,7 +16,7 @@ public class Histograma extends Calculos {
     }
     
     @Override
-    public void informe(){
+    public String[][] informe(){
         ArrayList n = Filtro();
         String[][] tabla = super.getTabla();
         String[][] histograma = super.getHistograma();
@@ -78,6 +78,7 @@ public class Histograma extends Calculos {
         }
         System.out.println("");
         //super.getgDatos().getArchivo().SalidaExcel(tabla,null);
+        return tabla;
     }
 
     @Override
@@ -86,8 +87,8 @@ public class Histograma extends Calculos {
     }
 
     @Override
-    public IOExcel getArchivo() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public IOEstrategia getArchivo() {
+        return super.getgDatos().getArchivo();
     }
 
 }

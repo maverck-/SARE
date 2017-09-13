@@ -3,15 +3,15 @@ package tipoInv;
 import java.io.IOException;
 import listas.Inversion;
 import java.util.*;
-import proyectobanco.IOExcel;
+import proyectobanco.IOEstrategia;
 
 public abstract class GestorDatos {
 
-    public abstract void informe();
+    public abstract String[][] informe();
 
     public abstract ArrayList Filtro();
 
-    public abstract IOExcel getArchivo();
+    public abstract IOEstrategia getArchivo();
 
     protected void quickSort(ArrayList e, int izq, int der) {
         Inversion piv = (Inversion) e.get(izq);

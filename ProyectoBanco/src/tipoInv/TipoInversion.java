@@ -11,24 +11,24 @@ import java.util.ArrayList;
 import java.util.Date;
 import listas.Inversion;
 import listas.Lista;
-import proyectobanco.IOExcel;
+import proyectobanco.IOEstrategia;
 
 /**
  *
  * @author Maver
  */
-public final class General extends GestorDatos {
+public class TipoInversion extends GestorDatos {
 
     private Lista datos;
     private ArrayList filtro;
     private String ini, fin;
     private String tip;
-    private IOExcel archivo;
+    private IOEstrategia archivo;
 
-    public General(String arch, String i, String f, String t) throws IOException, NoDato {
+    public TipoInversion(String arch, String i, String f, String t) throws IOException, NoDato {
         try {
-            archivo = new IOExcel(arch);
-            datos = archivo.LegacyLector();
+            archivo = new IOEstrategia(arch);
+            datos = archivo.Lectura();
             ini = i;
             fin = f;
             tip = t;
@@ -38,14 +38,15 @@ public final class General extends GestorDatos {
         }
     }
     
-    public IOExcel getArchivo(){
+    public IOEstrategia getArchivo(){
         return archivo;
     }
     
     @Override
-    public void informe() {
+    public String[][] informe() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    
     @Override
     public ArrayList Filtro() {
         Date i = ConvertirFecha(ini);

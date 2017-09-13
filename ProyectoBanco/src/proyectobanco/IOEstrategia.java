@@ -26,19 +26,19 @@ import java.util.Date;
  *
  * @author Eduardo
  */
-public class IOExcel {
+public class IOEstrategia {
 
     private String nomArchivo;
     private List clientes;
     private Lista inversiones;
 
-    public IOExcel(String nombre) throws NoDato, IOException, NumberFormatException {
+    public IOEstrategia(String nombre) throws NoDato, IOException, NumberFormatException {
         nomArchivo = nombre;
         clientes = new ArrayList();
         inversiones = new Lista();
     }
 
-    public Lista LegacyLector() throws IOException, NoDato, NumberFormatException {
+    public Lista Lectura() throws IOException, NoDato, NumberFormatException {
         FileInputStream file = new FileInputStream(nomArchivo);
         XSSFWorkbook libro = new XSSFWorkbook(file);
         XSSFSheet hoja = libro.getSheetAt(0);
@@ -82,7 +82,7 @@ public class IOExcel {
         return cell.toString();
     }
 
-    public void SalidaExcel(String[][] p, String[][] q) {
+    public void Escritura(String[][] p, String[][] q) {
         XSSFWorkbook libro = new XSSFWorkbook();
         XSSFSheet hoja = libro.createSheet("Informe Estadístico");
         for (int i = 0; i < p.length; i++) {

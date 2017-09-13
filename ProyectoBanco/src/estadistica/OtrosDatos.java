@@ -2,7 +2,7 @@ package estadistica;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import proyectobanco.IOExcel;
+import proyectobanco.IOEstrategia;
 import tipoInv.GestorDatos;
 
 /**
@@ -16,7 +16,7 @@ public class OtrosDatos extends Calculos {
     }
 
     @Override
-    public void informe() {
+    public String[][] informe() {
         String[][] d = super.getDatos();
         
         d[0][0] = "Esperanza: \t\t\t";
@@ -48,7 +48,7 @@ public class OtrosDatos extends Calculos {
             System.out.println("");
         }
         System.out.println("");
-        
+        return d;
         //super.getgDatos().getArchivo().SalidaExcel(null,d); 
     }   
 
@@ -58,7 +58,7 @@ public class OtrosDatos extends Calculos {
     }
 
     @Override
-    public IOExcel getArchivo() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public IOEstrategia getArchivo() {
+        return super.getgDatos().getArchivo();
     }
 }

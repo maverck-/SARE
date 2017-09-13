@@ -1,8 +1,7 @@
-
 package estadistica;
 
 import java.util.ArrayList;
-import proyectobanco.IOExcel;
+import proyectobanco.IOEstrategia;
 import tipoInv.GestorDatos;
 
 /**
@@ -16,17 +15,17 @@ public class Extras extends Calculos {
     }
 
     @Override
-    public void informe() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
     public ArrayList Filtro() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public IOExcel getArchivo() {
+    public IOEstrategia getArchivo() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String[][] informe() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

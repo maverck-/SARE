@@ -12,7 +12,7 @@ package proyectobanco;
 import estadistica.*;
 import listas.NoDato;
 import java.io.*;
-import tipoInv.General;
+import tipoInv.TipoInversion;
 import tipoInv.GestorDatos;
 //import java.util.*;
 
@@ -25,11 +25,13 @@ public class ProyectoBanco {
         // TODO code application logic here
 
         /*GestorDatos Legacy = new GestorDatos("DatosSistemaLegacy.xlsx");*/
-        GestorDatos legacy = new General("DatosSistemaLegacy.xlsx", "31-dic-2014", "25-dic-2019", "FM"); //Tipo: GR=General, FM=Fondos Mutuos, etc.
-        legacy = new OtrosDatos(legacy);
-        legacy.informe();
+        GestorDatos legacy = new TipoInversion("DatosSistemaLegacy.xlsx", "31-dic-2014", "25-dic-2019", "FM"); //Tipo: GR=TipoInversion, FM=Fondos Mutuos, etc.
         legacy = new Histograma(legacy);
-        legacy.informe();
+        String[][] p = legacy.informe();
+        legacy = new OtrosDatos(legacy);
+        String[][] q = legacy.informe();
+        
+        legacy.getArchivo().Escritura(p, q);
 
     }
 
