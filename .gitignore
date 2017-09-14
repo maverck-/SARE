@@ -13,3 +13,18 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+/ABB/nbproject/private/
+/StringToDate/nbproject/private/
+/StringToDate/build/
+/Decorator/nbproject/private/
+/Decorator/build/
+/Map/nbproject/private/
+/Maps/nbproject/private/
+/Maps/build/
+/SortMain/nbproject/private/
+/Escribir_Excel/nbproject/private/
+/Escribir_Excel/build/
+/Graficar/nbproject/private/
+/ProyectoBanco/nbproject/private/
+/ProyectoBanco/build/
+/ProyectoBanco/dist/
