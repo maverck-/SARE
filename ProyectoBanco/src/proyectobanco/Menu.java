@@ -18,7 +18,7 @@ public class Menu extends javax.swing.JFrame {
      * Creates new form Menu
      */
     public Menu() {
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         initComponents();
     }
 
@@ -30,12 +30,12 @@ public class Menu extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
         buttonGroup1 = new javax.swing.ButtonGroup();
-        query1 = java.beans.Beans.isDesignTime() ? null : ((javax.persistence.EntityManager)null).createQuery("");
+        query1 = null;
         jFileChooser1 = new javax.swing.JFileChooser();
-        buttonGroup2 = new javax.swing.ButtonGroup();
+        buttonGroup2 = null;
+        proyectoBanco1 = new proyectobanco.ProyectoBanco();
         jDateI = new com.toedter.calendar.JDateChooser();
         cancelar = new javax.swing.JButton();
         jDateF = new com.toedter.calendar.JDateChooser();
@@ -90,11 +90,6 @@ public class Menu extends javax.swing.JFrame {
 
         tipoDeInversion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Fondo Mutuo", "Depósito a Plazo Fijo", "Fondo Inmobiliario", "Bonos" }));
 
-        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, conFiltroInversion, org.jdesktop.beansbinding.ObjectProperty.create(), tipoDeInversion, org.jdesktop.beansbinding.BeanProperty.create("elements"));
-        bindingGroup.addBinding(binding);
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, conFiltroInversion, org.jdesktop.beansbinding.ObjectProperty.create(), tipoDeInversion, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
-        bindingGroup.addBinding(binding);
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -122,10 +117,10 @@ public class Menu extends javax.swing.JFrame {
                         .addComponent(jLabel2)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jDateI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jDateI, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jDateF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(75, 75, 75))))
+                        .addComponent(jDateF, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(52, 52, 52))))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -191,8 +186,6 @@ public class Menu extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        bindingGroup.bind();
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -221,6 +214,9 @@ public class Menu extends javax.swing.JFrame {
             default:
                 throw new AssertionError();
         }
+        
+        buttonGroup1.add(conFiltroInversion);
+        buttonGroup1.add(sinFiltroInversion);
     }//GEN-LAST:event_ejecutarActionPerformed
 
     /**
@@ -278,9 +274,9 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
+    private proyectobanco.ProyectoBanco proyectoBanco1;
     private javax.persistence.Query query1;
     private javax.swing.JRadioButton sinFiltroInversion;
     private javax.swing.JComboBox<String> tipoDeInversion;
-    private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 }

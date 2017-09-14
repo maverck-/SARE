@@ -8,10 +8,18 @@
       <Properties>
         <Property name="query" type="java.lang.String" value=""/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="null"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JFileChooser" name="jFileChooser1">
     </Component>
     <Component class="javax.swing.ButtonGroup" name="buttonGroup2">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="null"/>
+      </AuxValues>
+    </Component>
+    <Component class="proyectobanco.ProyectoBanco" name="proyectoBanco1">
     </Component>
   </NonVisualComponents>
   <Properties>
@@ -68,10 +76,10 @@
                       <EmptySpace min="110" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
-                      <Component id="jDateI" min="-2" max="-2" attributes="0"/>
+                      <Component id="jDateI" min="-2" pref="110" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="jDateF" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
+                      <Component id="jDateF" min="-2" pref="110" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -246,10 +254,6 @@
           </StringArray>
         </Property>
       </Properties>
-      <BindingProperties>
-        <BindingProperty name="elements" source="conFiltroInversion" target="tipoDeInversion" targetPath="elements" updateStrategy="0" immediately="false"/>
-        <BindingProperty name="selectedItem" source="conFiltroInversion" target="tipoDeInversion" targetPath="selectedItem" updateStrategy="0" immediately="false"/>
-      </BindingProperties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
