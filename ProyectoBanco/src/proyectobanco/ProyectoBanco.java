@@ -26,9 +26,9 @@ public class ProyectoBanco {
 
         /*GestorDatos Legacy = new GestorDatos("DatosSistemaLegacy.xlsx");*/
         GestorDatos legacy = new TipoInversion("DatosSistemaLegacy.xlsx", "31-dic-2014", "25-dic-2019", "FM"); //Tipo: GR=TipoInversion, FM=Fondos Mutuos, etc.
-        legacy = new Histograma(legacy);
+        legacy = new TablaHistograma(legacy);
         String[][] p = legacy.informe();
-        legacy = new OtrosDatos(legacy);
+        legacy = new TendenciaCentral(legacy);
         String[][] q = legacy.informe();
         
         legacy.getArchivo().Escritura(p, q);

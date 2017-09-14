@@ -9,9 +9,9 @@ import tipoInv.GestorDatos;
  *
  * @author Maver
  */
-public class OtrosDatos extends Calculos {
+public class TendenciaCentral extends Calculos {
     
-    public OtrosDatos(GestorDatos g) {
+    public TendenciaCentral(GestorDatos g) {
         super(g);     
     }
 

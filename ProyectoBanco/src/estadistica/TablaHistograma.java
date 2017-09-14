@@ -9,9 +9,9 @@ import tipoInv.GestorDatos;
  *
  * @author Maver
  */
-public class Histograma extends Calculos {  
+public class TablaHistograma extends Calculos {  
 
-    public Histograma(GestorDatos g) {
+    public TablaHistograma(GestorDatos g) {
         super(g);   
     }
     
