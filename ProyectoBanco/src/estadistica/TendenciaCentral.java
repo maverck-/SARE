@@ -30,25 +30,13 @@ public class TendenciaCentral extends Calculos {
         d[2][0] = "Mediana: \t\t\t";
         super.Mediana();
 
-        d[3][0] = "Total de datos: \t\t\t\t";
+        d[3][0] = "Moda: \t\t\t\t";
         super.Moda();
 
         d[6][0] = "Media truncada: \t\t";
-
-        for (int i = 0; i < d.length; i++) {
-            for (int j = 0; j < d[0].length; j++) {
-                try {
-                    System.out.print(d[i][j]);
-                } catch (NullPointerException e) {
-                    System.out.print("No Dato");
-                } finally {
-                    System.out.print("|");
-                }
-            }
-            System.out.println("");
-        }
-        System.out.println("");
-        return d;
+        super.MediaT();
+        
+        return d; 
     }   
 
     @Override

@@ -26,6 +26,7 @@ import java.util.Date;
  *
  * @author Eduardo
  */
+
 public class IOEstrategia {
 
     private String nomArchivo;

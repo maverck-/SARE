@@ -1,6 +1,7 @@
 package estadistica;
 
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import proyectobanco.IOEstrategia;
 import tipoInv.GestorDatos;
@@ -16,7 +17,7 @@ public class TablaHistograma extends Calculos {
     }
     
     @Override
-    public String[][] informe(){
+    public String[][] informe() {
         ArrayList n = Filtro();
         String[][] tabla = super.getTabla();
         String[][] histograma = super.getHistograma();
@@ -57,13 +58,13 @@ public class TablaHistograma extends Calculos {
                 }
             }
             tabla[c + 1][3] = (int) parcial + "\t\t\t";
-            tabla[c + 1][4] = parcial / n.size() + "\t";
-            tabla[c + 1][5] = parcial / n.size() * 100 + "\t";
+            tabla[c + 1][4] = truncar(parcial / n.size()) + "\t";
+            tabla[c + 1][5] = truncar(parcial / n.size() * 100) + "\t";
             tabla[c + 1][6] = (int) count + "\t\t\t";
-            tabla[c + 1][7] = count / n.size() + "\t";
-            tabla[c + 1][8] = count / n.size() * 100 + "\t";
+            tabla[c + 1][7] = truncar(count / n.size()) + "\t";
+            tabla[c + 1][8] = truncar(count / n.size() * 100) + "\t";
         }
-        
+
         for (int i = 0; i < tabla.length; i++) {
             for (int j = 0; j < tabla[0].length; j++) {
                 try {
@@ -77,6 +78,7 @@ public class TablaHistograma extends Calculos {
             System.out.println("");
         }
         System.out.println("");
+        //super.getgDatos().getArchivo().SalidaExcel(tabla,null);
         return tabla;
     }
 
@@ -88,6 +90,11 @@ public class TablaHistograma extends Calculos {
     @Override
     public IOEstrategia getArchivo() {
         return super.getgDatos().getArchivo();
+    }
+
+    public String truncar(double d) {
+        DecimalFormat df = new DecimalFormat("#,######");
+        return df.format(d);
     }
 
 }

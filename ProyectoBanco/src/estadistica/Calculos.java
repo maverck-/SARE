@@ -29,10 +29,10 @@ public abstract class Calculos extends GestorDatos {
     public Calculos(GestorDatos g) {
         gDatos = g;
         datos = new String[7][2];
-        if ((int) Math.sqrt(gDatos.Filtro().size()) > 15) {
+        if (1+ (int)(1.33*Math.log(gDatos.Filtro().size())) > 15) {
             k = 15;
         } else {
-            k = (int) Math.sqrt(gDatos.Filtro().size());
+            k = 1+ (int)(1.33*Math.log(gDatos.Filtro().size()));
         }
         histograma = new String[k][gDatos.Filtro().size()];
         tabla = new String[k + 1][9];
@@ -48,14 +48,39 @@ public abstract class Calculos extends GestorDatos {
         datos[0][1] = Esperanza + "";
     }
 
-    protected void Moda() {
-        Moda = (double)gDatos.Filtro().size();
-
+    protected void Moda(){
+        int mayor=0;
+        int lugar=0;
+        for(int i=0;i<lista.size()-1;i++){
+            int count=0;
+            while(Get(lista,i)==Get(lista,i+1)){
+                count++;
+                i++;
+           }
+            if(count>mayor){
+                lugar=i;
+                mayor=count;        
+            }  
+        }
+        if(mayor==1){
+            Moda=-1;
+        }else{
+            Moda=Get(lista,lugar);
+        }
         datos[3][1] = Moda + "";
-        MediaT = 0;
-        datos[6][1] = MediaT + "";
     }
-
+    
+    protected void MediaT(){
+        int Tot=lista.size();
+        int margen=(int)(Tot*0.05);
+        double suma=0;
+        for(int i=margen+1;i<(Tot-margen);i++){
+            suma+=Get(lista,i);
+        }      
+        MediaT = suma/(Tot-2*margen);
+        datos[6][1] = MediaT + "";
+     }
+ 
     protected void Mediana() {
         if (lista.size() % 2 == 0) {
             Mediana = Get(lista, lista.size() / 2) + Get(lista, lista.size() / 2 - 1);

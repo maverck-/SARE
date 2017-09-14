@@ -60,8 +60,7 @@ public class TipoInversion extends GestorDatos {
 
         datos.setFirst();
         while (!datos.eol()) {
-            if (((Inversion) datos.currValue()).getFechas().getInicio().after(i)
-                    && ((Inversion) datos.currValue()).getFechas().getFinal().before(f)) {
+            if (((Inversion) datos.currValue()).getFechas().getInicio().compareTo(i)>=0 && ((Inversion) datos.currValue()).getFechas().getFinal().compareTo(f)<=0) {
                 if (tip.equals("GR")) {
                     entrega.add(datos.currValue());
                 } else {
