@@ -5,8 +5,16 @@
  */
 package proyectobanco;
 
+import estadistica.TablaHistograma;
+import estadistica.TendenciaCentral;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
-import javax.swing.JFrame;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import listas.NoDato;
+import tipoInv.GestorDatos;
+import tipoInv.TipoInversion;
 
 /**
  *
@@ -14,12 +22,21 @@ import javax.swing.JFrame;
  */
 public class Menu extends javax.swing.JFrame {
 
+    private String fechaInicio;
+    private String fechaFin;
+    private String tipo;
+    private boolean estado;
+
     /**
      * Creates new form Menu
      */
-    public Menu() {
+    public Menu() throws IOException, NoDato {
         //setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         initComponents();
+        fechaInicio = "";
+        fechaFin = "";
+        tipo = "";
+        estado = false;
     }
 
     /**
@@ -31,35 +48,54 @@ public class Menu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroup1 = new javax.swing.ButtonGroup();
-        query1 = null;
+        grupoDeBotones = new javax.swing.ButtonGroup();
         jFileChooser1 = new javax.swing.JFileChooser();
-        buttonGroup2 = null;
-        proyectoBanco1 = new proyectobanco.ProyectoBanco();
-        jDateI = new com.toedter.calendar.JDateChooser();
-        cancelar = new javax.swing.JButton();
-        jDateF = new com.toedter.calendar.JDateChooser();
-        ejecutar = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
-        jSeparator2 = new javax.swing.JSeparator();
-        jLabel6 = new javax.swing.JLabel();
+        titulo = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
+        rangoFechas = new javax.swing.JLabel();
+        fechaI = new javax.swing.JLabel();
+        jDateI = new com.toedter.calendar.JDateChooser();
+        fechaF = new javax.swing.JLabel();
+        jDateF = new com.toedter.calendar.JDateChooser();
         jSeparator4 = new javax.swing.JSeparator();
-        conFiltroInversion = new javax.swing.JRadioButton();
-        sinFiltroInversion = new javax.swing.JRadioButton();
-        jLabel7 = new javax.swing.JLabel();
-        tipoDeInversion = new javax.swing.JComboBox<>();
+        deseaFiltroTipo = new javax.swing.JLabel();
+        fondoMutuo = new javax.swing.JRadioButton();
+        depositoAplazo = new javax.swing.JRadioButton();
+        jSeparator1 = new javax.swing.JSeparator();
+        ejecutar = new javax.swing.JButton();
+        cancelar = new javax.swing.JButton();
+        jSeparator2 = new javax.swing.JSeparator();
+        bsod = new javax.swing.JLabel();
+        fondoInmobiliario = new javax.swing.JRadioButton();
+        bonos = new javax.swing.JRadioButton();
+        sinFiltro = new javax.swing.JRadioButton();
+        grupoDeBotones.add(fondoMutuo);
+        grupoDeBotones.add(depositoAplazo);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 255));
 
-        cancelar.setBackground(new java.awt.Color(255, 0, 0));
-        cancelar.setText("Cancelar");
+        titulo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        titulo.setText("Informe Estadistico");
+
+        rangoFechas.setText("Ingrese un rango de fechas:");
+
+        fechaI.setText("Fecha inicial");
+
+        fechaF.setText("Fecha final");
+
+        deseaFiltroTipo.setText("Seleccione el filtro por tipo de inversión:");
+
+        grupoDeBotones.add(fondoMutuo);
+        fondoMutuo.setText("Fondo Mutuo");
+        fondoMutuo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fondoMutuoActionPerformed(evt);
+            }
+        });
+
+        grupoDeBotones.add(depositoAplazo);
+        depositoAplazo.setText("Depósito a plazo fijo");
 
         ejecutar.setBackground(new java.awt.Color(51, 255, 51));
         ejecutar.setText("Aceptar");
@@ -69,58 +105,29 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("Fecha inicial");
+        cancelar.setBackground(new java.awt.Color(255, 0, 0));
+        cancelar.setText("Cancelar");
+        cancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelarActionPerformed(evt);
+            }
+        });
 
-        jLabel2.setText("Fecha final");
+        bsod.setText("© BSOD - Todos los derechos reservados");
 
-        jLabel3.setText("¿Desea un filtro por tipo de inversión?");
+        grupoDeBotones.add(fondoInmobiliario);
+        fondoInmobiliario.setText("Fondo Inmobiliario");
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel4.setText("Informe Estadistico");
+        grupoDeBotones.add(bonos);
+        bonos.setText("Bonos");
 
-        jLabel5.setText("© BSOD - Todos los derechos reservados");
-
-        jLabel6.setText("Ingrese un rango de fechas:");
-
-        conFiltroInversion.setText("SI");
-
-        sinFiltroInversion.setText("NO");
-
-        jLabel7.setText("Indique el tipo de inversión:");
-
-        tipoDeInversion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Fondo Mutuo", "Depósito a Plazo Fijo", "Fondo Inmobiliario", "Bonos" }));
+        grupoDeBotones.add(sinFiltro);
+        sinFiltro.setText("Sin filtro");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(74, 74, 74)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel3)
-                                .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(conFiltroInversion)
-                                .addGap(18, 18, 18)
-                                .addComponent(sinFiltroInversion))
-                            .addComponent(tipoDeInversion, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel2)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jDateI, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jDateF, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(52, 52, 52))))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -130,32 +137,58 @@ public class Menu extends javax.swing.JFrame {
                     .addComponent(jSeparator4))
                 .addGap(10, 10, 10))
             .addGroup(layout.createSequentialGroup()
+                .addGap(100, 100, 100)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                        .addComponent(bsod)
+                        .addComponent(titulo))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(100, 100, 100)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel4)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(100, 100, 100)
                         .addComponent(ejecutar)
                         .addGap(52, 52, 52)
                         .addComponent(cancelar)))
                 .addContainerGap(100, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(74, 74, 74)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(bonos)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(rangoFechas)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jDateI, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(fechaI))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jDateF, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(fechaF))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(depositoAplazo)
+                            .addComponent(fondoInmobiliario)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(fondoMutuo)
+                                .addGap(69, 69, 69)
+                                .addComponent(sinFiltro))
+                            .addComponent(deseaFiltroTipo))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(9, 9, 9)
-                .addComponent(jLabel4)
+                .addComponent(titulo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(1, 1, 1)
-                .addComponent(jLabel6)
+                .addComponent(rangoFechas)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2))
+                    .addComponent(fechaI)
+                    .addComponent(fechaF))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -163,17 +196,19 @@ public class Menu extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(4, 4, 4)
-                        .addComponent(jLabel3)
+                        .addComponent(deseaFiltroTipo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(sinFiltroInversion)
-                            .addComponent(conFiltroInversion))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(tipoDeInversion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 4, Short.MAX_VALUE)
+                            .addComponent(fondoMutuo)
+                            .addComponent(sinFiltro))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(depositoAplazo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(fondoInmobiliario)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(bonos)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 3, Short.MAX_VALUE)
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 1, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(ejecutar)
@@ -182,7 +217,7 @@ public class Menu extends javax.swing.JFrame {
                         .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jDateF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel5)
+                .addComponent(bsod)
                 .addContainerGap())
         );
 
@@ -190,34 +225,98 @@ public class Menu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ejecutarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ejecutarActionPerformed
-        // TODO add your handling code here:
-        //Pedir fechas
-        String fechaInicio = new SimpleDateFormat("dd-mm-aaaa").format(jDateI.getDate());
-        String fechaFin = new SimpleDateFormat("dd-mm-aaaa").format(jDateF.getDate());
-        //Preguntar si desea un filtro por inversión
-        //Obtenemos el tipo de inversión
-        String tipo;
-        int tipoInv = tipoDeInversion.getSelectedIndex();
-        switch (tipoInv) {
-            case 0:
-                tipo = "FM";
-                break;
-            case 1:
-                tipo = "DF";
-                break;
-            case 2:
-                tipo = "FI";
-                break;
-            case 3:
-                tipo = "BO";
-                break;
-            default:
-                throw new AssertionError();
-        }
+        try {
+            // TODO add your handling code here:
+            //metodo para iniciar el main
+
+            //Pedir fechas
+            try {
+                fechaInicio = new SimpleDateFormat("dd-MMM-yyyy").format(jDateI.getDate());
+                System.out.println(fechaInicio);
+            } catch (NullPointerException e) {
+                JOptionPane.showMessageDialog(null, "Ingrese una fecha de inicio.",
+                        "¡Cuidado!", JOptionPane.INFORMATION_MESSAGE);
+            }
+
+            try {
+                fechaFin = new SimpleDateFormat("dd-MMM-yyyy").format(jDateF.getDate());
+                System.out.println(fechaFin);
+            } catch (NullPointerException e) {
+                JOptionPane.showMessageDialog(null, "Ingrese una fecha de fin.",
+                        "¡Cuidado!", JOptionPane.INFORMATION_MESSAGE);
+            }
+            //Obtenemos el tipo de inversión
+            boolean ingresado = false;
+            do {
+                if (fondoMutuo.getModel().isSelected()) {
+                    tipo = "FM";
+                    ingresado = true;
+                } else if (depositoAplazo.getModel().isSelected()) {
+                    tipo = "DF";
+                    ingresado = true;
+                } else if (fondoInmobiliario.getModel().isSelected()) {
+                    tipo = "FI";
+                    ingresado = true;
+                } else if (bonos.getModel().isSelected()) {
+                    tipo = "BO";
+                    ingresado = true;
+                } else if (sinFiltro.getModel().isSelected()) {
+                    tipo = "GR";
+                    ingresado = true;
+                }
+                if (tipo.equals("")) {
+                    JOptionPane.showMessageDialog(null, "Ingrese un tipo de filtro.",
+                            "¡Cuidado!", JOptionPane.INFORMATION_MESSAGE);
+                }
+            } while (!ingresado);
+
+            JOptionPane.showMessageDialog(null, "Su solicitud está siendo procesada"
+                    + "/n ¡NO CANCELE LA OPERACIÓN!",
+                    "Paciencia...", JOptionPane.INFORMATION_MESSAGE);
+            estado = true;
+
+            /*GestorDatos legacy = new TipoInversion("DatosSistemaLegacy.xlsx", fechaInicio, fechaFin, tipo); //Tipo: GR=TipoInversion, FM=Fondos Mutuos, etc.
+        legacy = new TablaHistograma(legacy);
+        String[][] p = legacy.informe();
+        legacy = new TendenciaCentral(legacy);
+        String[][] q = legacy.informe();
         
-        buttonGroup1.add(conFiltroInversion);
-        buttonGroup1.add(sinFiltroInversion);
+        legacy.getArchivo().Escritura(p, q);*/
+        } catch (NullPointerException e) {
+            System.out.println("Hay un error xD");
+        }
+        /*catch (IOException ex) {
+            Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoDato ex) {
+            Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+        }*/
+
     }//GEN-LAST:event_ejecutarActionPerformed
+
+    private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_cancelarActionPerformed
+
+    public String getFechaInicio() {
+        return fechaInicio;
+    }
+
+    public String getFechaFin() {
+        return fechaFin;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+    
+    public boolean getEstado(){
+        return estado;
+    }
+
+    private void fondoMutuoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fondoMutuoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fondoMutuoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -233,50 +332,67 @@ public class Menu extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Menu.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Menu.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Menu.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Menu.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Menu().setVisible(true);
+                try {
+                    new Menu().setVisible(true);
+
+                } catch (IOException ex) {
+                    Logger.getLogger(Menu.class
+                            .getName()).log(Level.SEVERE, null, ex);
+
+                } catch (NoDato ex) {
+                    Logger.getLogger(Menu.class
+                            .getName()).log(Level.SEVERE, null, ex);
+                }
+
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.ButtonGroup buttonGroup2;
+    private javax.swing.JRadioButton bonos;
+    private javax.swing.JLabel bsod;
     private javax.swing.JButton cancelar;
-    private javax.swing.JRadioButton conFiltroInversion;
+    private javax.swing.JRadioButton depositoAplazo;
+    private javax.swing.JLabel deseaFiltroTipo;
     private javax.swing.JButton ejecutar;
+    private javax.swing.JLabel fechaF;
+    private javax.swing.JLabel fechaI;
+    private javax.swing.JRadioButton fondoInmobiliario;
+    private javax.swing.JRadioButton fondoMutuo;
+    private javax.swing.ButtonGroup grupoDeBotones;
     private com.toedter.calendar.JDateChooser jDateF;
     private com.toedter.calendar.JDateChooser jDateI;
     private javax.swing.JFileChooser jFileChooser1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
-    private proyectobanco.ProyectoBanco proyectoBanco1;
-    private javax.persistence.Query query1;
-    private javax.swing.JRadioButton sinFiltroInversion;
-    private javax.swing.JComboBox<String> tipoDeInversion;
+    private javax.swing.JLabel rangoFechas;
+    private javax.swing.JRadioButton sinFiltro;
+    private javax.swing.JLabel titulo;
     // End of variables declaration//GEN-END:variables
 }
