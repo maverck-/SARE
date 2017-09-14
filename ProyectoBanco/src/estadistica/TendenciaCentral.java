@@ -49,7 +49,6 @@ public class TendenciaCentral extends Calculos {
         }
         System.out.println("");
         return d;
-        //super.getgDatos().getArchivo().SalidaExcel(null,d); 
     }   
 
     @Override

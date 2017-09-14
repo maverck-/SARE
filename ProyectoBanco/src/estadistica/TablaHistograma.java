@@ -77,7 +77,6 @@ public class TablaHistograma extends Calculos {
             System.out.println("");
         }
         System.out.println("");
-        //super.getgDatos().getArchivo().SalidaExcel(tabla,null);
         return tabla;
     }
 

@@ -37,16 +37,16 @@ public class TipoInversion extends GestorDatos {
             System.out.println("El archivo no existe.");
         }
     }
-    
-    public IOEstrategia getArchivo(){
+
+    public IOEstrategia getArchivo() {
         return archivo;
     }
-    
+
     @Override
     public String[][] informe() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
     @Override
     public ArrayList Filtro() {
         Date i = ConvertirFecha(ini);
@@ -108,23 +108,5 @@ public class TipoInversion extends GestorDatos {
             }
         }
     }
-    
-    
-    /*@Override
-    public ArrayList Filtro() {
-        Date i = ConvertirFecha(ini);
-        Date f = ConvertirFecha(fin);
-        ArrayList entrega = new ArrayList();
-        datos.setFirst();
-        while (!datos.eol()) {
-            if (((Inversion) datos.currValue()).getFechas().getInicio().after(i)
-                    && ((Inversion) datos.currValue()).getFechas().getFinal().before(f)) {
-                entrega.add(datos.currValue());
-            }
-            datos.next();
-        }
-        quickSort(entrega, 0, entrega.size() - 1);
 
-        return entrega;
-    }*/
 }
