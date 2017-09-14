@@ -6,6 +6,7 @@
 package proyectobanco;
 
 import java.text.SimpleDateFormat;
+import javax.swing.JFrame;
 
 /**
  *
@@ -17,6 +18,7 @@ public class Menu extends javax.swing.JFrame {
      * Creates new form Menu
      */
     public Menu() {
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         initComponents();
     }
 
