@@ -76,7 +76,7 @@ public class Menu extends javax.swing.JFrame {
         setBackground(new java.awt.Color(0, 0, 255));
 
         titulo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        titulo.setText("Informe Estadistico");
+        titulo.setText("Skynet - Informe Estadístico");
 
         rangoFechas.setText("Ingrese un rango de fechas:");
 
@@ -176,8 +176,8 @@ public class Menu extends javax.swing.JFrame {
                 .addGap(1, 1, 1)
                 .addComponent(rangoFechas)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(fechaI)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(fechaI, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(fechaF))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

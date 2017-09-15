@@ -35,6 +35,8 @@ public class TendenciaCentral extends Calculos {
 
         d[6][0] = "Media truncada: \t\t";
         super.MediaT();
+        
+        System.out.println("Medidas de tendencia central:");
 
         for (int i = 0; i < d.length; i++) {
             for (int j = 0; j < d[0].length; j++) {

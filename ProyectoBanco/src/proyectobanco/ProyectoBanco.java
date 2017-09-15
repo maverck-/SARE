@@ -34,7 +34,7 @@ public class ProyectoBanco {
         System.out.println("\n Su consulta fué realizada para las siguientes fechas:"
                 + "\n Fecha inicial: "+ x.getFechaInicio()
                 + "\n Fecha final: "+ x.getFechaFin()
-                + "\n COMIENZO PROGRAMA");
+                + "\n PROCESANDO SOLICITUD...");
         x.setVisible(false);
         GestorDatos legacy = new TipoInversion("DatosSistemaLegacy.xlsx", x.getFechaInicio(), x.getFechaFin(), x.getTipo());
         legacy = new TablaHistograma(legacy);
@@ -44,7 +44,6 @@ public class ProyectoBanco {
         //Escribimos el informe en el archivo de salida (Excel)
         legacy.getArchivo().Escritura(p, q);
         x.cambiarEstado();
-
     }
 
 }
