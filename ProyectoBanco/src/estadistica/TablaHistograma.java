@@ -8,30 +8,40 @@ import tipoInv.GestorDatos;
 
 /**
  *
- * @author Maver
+ * @author BSOD
  */
-public class TablaHistograma extends Calculos {  
+public class TablaHistograma extends Calculos {
 
     public TablaHistograma(GestorDatos g) {
-        super(g);   
+        super(g);
     }
-    
-    @Override
+
     public String[][] informe() {
         ArrayList n = Filtro();
         String[][] tabla = super.getTabla();
         String[][] histograma = super.getHistograma();
         int k = super.getK();
+        int[] largos = new int[9];
+        String esp = "                                        ";
 
         tabla[0][0] = "N° clase";
-        tabla[0][1] = "Límites intervalos \t";
+        largos[0] = tabla[0][0].length();
+        tabla[0][1] = "Límites intervalos";
+        largos[1] = tabla[0][1].length();
         tabla[0][2] = "Marca de clase";
-        tabla[0][3] = "N° observaciones \t";
-        tabla[0][4] = "Frecuencia relativa \t";
-        tabla[0][5] = "Porcentaje relativo \t";
-        tabla[0][6] = "N° Obs. acumuladas \t";
+        largos[2] = tabla[0][2].length();
+        tabla[0][3] = "N° observaciones";
+        largos[3] = tabla[0][3].length();
+        tabla[0][4] = "Frecuencia relativa";
+        largos[4] = tabla[0][4].length();
+        tabla[0][5] = "Porcentaje relativo";
+        largos[5] = tabla[0][5].length();
+        tabla[0][6] = "N° Obs. acumuladas";
+        largos[6] = tabla[0][6].length();
         tabla[0][7] = "Frec. relativa acumulada";
+        largos[7] = tabla[0][7].length();
         tabla[0][8] = "Porc. relativo acumulado";
+        largos[8] = tabla[0][8].length();
 
         int mayor = Get(n, n.size() - 1);
         int menor = Get(n, 0);
@@ -46,9 +56,9 @@ public class TablaHistograma extends Calculos {
             if (c == k - 1) {
                 may += k;
             }
-            tabla[c + 1][0] = c + 1 + "\t";
-            tabla[c + 1][1] = "[" + (int) men + "-" + (int) may + "[ \t";
-            tabla[c + 1][2] = (int) (men + may) / 2 + "\t";
+            tabla[c + 1][0] = c + 1 + "";
+            tabla[c + 1][1] = "[" + (int) men + "-" + (int) may + "[ ";
+            tabla[c + 1][2] = (int) (men + may) / 2 + "";
             for (int i = (int) count; i < n.size() && seguir; i++) {
                 if (men <= Get(n, i) && Get(n, i) < may) {
                     parcial++;
@@ -57,20 +67,24 @@ public class TablaHistograma extends Calculos {
                     seguir = false;
                 }
             }
-            tabla[c + 1][3] = (int) parcial + "\t\t\t";
-            tabla[c + 1][4] = truncar(parcial / n.size()) + "\t";
-            tabla[c + 1][5] = truncar(parcial / n.size() * 100) + "\t";
-            tabla[c + 1][6] = (int) count + "\t\t\t";
-            tabla[c + 1][7] = truncar(count / n.size()) + "\t";
-            tabla[c + 1][8] = truncar(count / n.size() * 100) + "\t";
+            tabla[c + 1][3] = (int) parcial + "";
+            tabla[c + 1][4] = truncar(parcial / n.size()) + "";
+            tabla[c + 1][5] = truncar(parcial / n.size() * 100) + "";
+            tabla[c + 1][6] = (int) count + "";
+            tabla[c + 1][7] = truncar(count / n.size()) + "";
+            tabla[c + 1][8] = truncar(count / n.size() * 100) + "";
         }
-        
-        System.out.println("Tabla de frecuencias:");
+
+        System.out.println("Tabla de frecencias:");
 
         for (int i = 0; i < tabla.length; i++) {
             for (int j = 0; j < tabla[0].length; j++) {
                 try {
-                    System.out.print(tabla[i][j]);
+                    int dif = 0;
+                    if (tabla[i][j].length() < largos[j]) {
+                        dif = largos[j] - tabla[i][j].length();
+                    }
+                    System.out.print(tabla[i][j] + esp.substring(0, dif));
                 } catch (NullPointerException e) {
                     System.out.print("No Dato");
                 } finally {
@@ -80,7 +94,6 @@ public class TablaHistograma extends Calculos {
             System.out.println("");
         }
         System.out.println("");
-        //super.getgDatos().getArchivo().SalidaExcel(tabla,null);
         return tabla;
     }
 

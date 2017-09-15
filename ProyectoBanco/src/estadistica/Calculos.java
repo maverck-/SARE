@@ -3,9 +3,8 @@ package estadistica;
 
 /**
  *
- * @author Eduardo
+ * @author BSOD
  */
-import listas.*;
 import java.util.*;
 import tipoInv.*;
 

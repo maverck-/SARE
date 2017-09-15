@@ -5,21 +5,16 @@
  */
 package proyectobanco;
 
-import estadistica.TablaHistograma;
-import estadistica.TendenciaCentral;
 import java.io.IOException;
-import static java.lang.Thread.sleep;
 import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import listas.NoDato;
-import tipoInv.GestorDatos;
-import tipoInv.TipoInversion;
 
 /**
  *
- * @author Maver
+ * @author BSOD
  */
 public class Menu extends javax.swing.JFrame {
 
@@ -32,10 +27,9 @@ public class Menu extends javax.swing.JFrame {
      * Creates new form Menu
      */
     public Menu() throws IOException, NoDato {
-        //setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         initComponents();
-        fechaInicio = "";
-        fechaFin = "";
+        fechaInicio = null;
+        fechaFin = null;
         tipo = null;
         estado = false;
     }
@@ -217,9 +211,8 @@ public class Menu extends javax.swing.JFrame {
     private void ejecutarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ejecutarActionPerformed
         boolean okfecha = false;
         boolean okfiltro = false;
-        // TODO add your handling code here:
-        //metodo para iniciar el main
-        //Pedir fechas
+        String tipoInversion = "";
+
         try {
             try {
                 if (jDateI.getDate().compareTo(jDateF.getDate()) > 0) {
@@ -227,25 +220,30 @@ public class Menu extends javax.swing.JFrame {
                 }
                 fechaInicio = new SimpleDateFormat("dd-MMM-yyyy").format(jDateI.getDate());
                 fechaFin = new SimpleDateFormat("dd-MMM-yyyy").format(jDateF.getDate());
-                
+
                 okfecha = true;
             } catch (NullPointerException e) {
                 okfecha = false;
                 JOptionPane.showMessageDialog(null, "Verifique el ingreso de las fechas.",
                         "¡Cuidado!", JOptionPane.INFORMATION_MESSAGE);
             }
-
+            
             try {
                 if (fondoMutuo.getModel().isSelected()) {
                     tipo = "FM";
+                    tipoInversion = "Fondo Mutuo";
                 } else if (depositoAplazo.getModel().isSelected()) {
                     tipo = "DF";
+                    tipoInversion = "Depósito a plazo fijo";
                 } else if (fondoInmobiliario.getModel().isSelected()) {
                     tipo = "FI";
+                    tipoInversion = "Fondo Inmobiliario";
                 } else if (bonos.getModel().isSelected()) {
                     tipo = "BO";
+                    tipoInversion = "Bonos";
                 } else if (sinFiltro.getModel().isSelected()) {
                     tipo = "GR";
+                    tipoInversion = "Sin filtro por tipo de inversión";
                 }
                 if (tipo == null) {
                     okfiltro = false;
@@ -263,8 +261,14 @@ public class Menu extends javax.swing.JFrame {
         } finally {
             if (okfecha && okfiltro) {
                 estado = true;
-                JOptionPane.showMessageDialog(null, "Su solicitud está siendo procesada...",
-                        "Paciencia...", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Su solicitud esta siendo realizada para los siguientes parámetros:"
+                        + "\n"
+                        + "\n   Fecha inicial:          " + fechaInicio
+                        + "\n   Fecha final:             " + fechaFin
+                        + "\n   Tipo de inversión: "+tipoInversion
+                        + "\n"
+                        + "\nEspere...",
+                        "¡Paciencia!", JOptionPane.INFORMATION_MESSAGE);
             }
         }
 

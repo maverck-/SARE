@@ -19,12 +19,11 @@ import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.apache.poi.xssf.usermodel.*;
 import java.util.Date;
 
 /**
  *
- * @author Eduardo
+ * @author BSOD
  */
 
 public class IOEstrategia {
@@ -85,7 +84,7 @@ public class IOEstrategia {
 
     public void Escritura(String[][] p, String[][] q) {
         XSSFWorkbook libro = new XSSFWorkbook();
-        XSSFSheet hoja = libro.createSheet("Informe Estadístico");
+        XSSFSheet hoja = libro.createSheet("Tabla de frecuencias");
         for (int i = 0; i < p.length; i++) {
             XSSFRow fila = hoja.createRow(i);
             for (int j = 0; j < p[0].length; j++) {
@@ -103,7 +102,7 @@ public class IOEstrategia {
             }
 
         }
-        XSSFSheet hoja1 = libro.createSheet("Otras Medidas");
+        XSSFSheet hoja1 = libro.createSheet("Medidas de tendencia central");
         for (int i = 0; i < q.length; i++) {
             XSSFRow fila = hoja1.createRow(i);
             for (int j = 0; j < q[0].length; j++) {
@@ -122,7 +121,7 @@ public class IOEstrategia {
         String[] fechaVH = fechaV[3].split(":");
         String nfecha = fechaV[2] + "_" + fechaV[1] + "_" + fechaV[5] + "_" + fechaVH[0] + "_" + fechaVH[1] + "_" + fechaVH[2];
         try {
-            FileOutputStream elFichero = new FileOutputStream("Informe_" + nfecha + ".xlsx");
+            FileOutputStream elFichero = new FileOutputStream("InformeEstadístico_" + nfecha + ".xlsx");
             libro.write(elFichero);
             elFichero.close();
         } catch (Exception e) {

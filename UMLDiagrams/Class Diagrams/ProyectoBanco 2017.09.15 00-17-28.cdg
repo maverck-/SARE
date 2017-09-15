@@ -2,7 +2,7 @@
 
 <ClassDiagram name="ProyectoBanco">
   <ClassDiagramComponents>
-    <Class name="Calculos" package="estadistica" visibility="public" isAbstract="true" xPosition="20.0" yPosition="20.0">
+    <Class name="Calculos" package="estadistica" visibility="public" isAbstract="true" xPosition="25.0" yPosition="43.0">
       <Fields>
         <Field name="gDatos" type="GestorDatos" visibility="private"/>
         <Field name="Varianza" type="double" visibility="private"/>
@@ -36,7 +36,7 @@
         <Method name="getTabla" returnType="String[][]" visibility="protected"/>
       </Methods>
     </Class>
-    <Class name="Extras" package="estadistica" visibility="public" xPosition="320.0" yPosition="20.0">
+    <Class name="Extras" package="estadistica" visibility="public" xPosition="337.0" yPosition="283.0">
       <Fields/>
       <Constructors>
         <Constructor visibility="public">
@@ -49,7 +49,7 @@
         <Method name="informe" returnType="String[][]" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="TablaHistograma" package="estadistica" visibility="public" xPosition="620.0" yPosition="20.0">
+    <Class name="TablaHistograma" package="estadistica" visibility="public" xPosition="337.0" yPosition="43.0">
       <Fields/>
       <Constructors>
         <Constructor visibility="public">
@@ -65,7 +65,7 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="TendenciaCentral" package="estadistica" visibility="public" xPosition="920.0" yPosition="20.0">
+    <Class name="TendenciaCentral" package="estadistica" visibility="public" xPosition="589.0" yPosition="188.0">
       <Fields/>
       <Constructors>
         <Constructor visibility="public">
@@ -78,7 +78,7 @@
         <Method name="getArchivo" returnType="IOEstrategia" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="Cliente" package="listas" visibility="public" xPosition="1220.0" yPosition="20.0">
+    <Class name="Cliente" package="listas" visibility="public" xPosition="1220.0" yPosition="43.0">
       <Fields>
         <Field name="inversiones" type="ArrayList&lt;Inversion&gt;" visibility="private"/>
         <Field name="cod_cli" type="String" visibility="private"/>
@@ -100,7 +100,7 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="Inversion" package="listas" visibility="public" xPosition="1520.0" yPosition="20.0">
+    <Class name="Inversion" package="listas" visibility="public" xPosition="1582.0" yPosition="188.0">
       <Fields>
         <Field name="id_inv" type="int" visibility="private"/>
         <Field name="tipo_inv" type="String" visibility="private"/>
@@ -131,7 +131,7 @@
         <Method name="getTipo" returnType="String" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="InversionCliente" package="listas" visibility="public" xPosition="1820.0" yPosition="20.0">
+    <Class name="InversionCliente" package="listas" visibility="public" xPosition="2251.0" yPosition="43.0">
       <Fields>
         <Field name="id_inv" type="int" visibility="private"/>
         <Field name="tipo_inv" type="String" visibility="private"/>
@@ -157,7 +157,7 @@
         <Method name="getCierre" returnType="Date" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="Lista" package="listas" visibility="public" xPosition="1722.0" yPosition="753.0">
+    <Class name="Lista" package="listas" visibility="public" xPosition="1220.0" yPosition="585.0">
       <Fields>
         <Field name="head" type="Nodo&lt;C&gt;" visibility="private"/>
         <Field name="actual" type="Nodo&lt;C&gt;" visibility="private"/>
@@ -183,7 +183,7 @@
         <Method name="eol" returnType="boolean" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="ListaCliente" package="listas" visibility="public" xPosition="320.0" yPosition="420.0">
+    <Class name="ListaCliente" package="listas" visibility="public" xPosition="1744.0" yPosition="575.0">
       <Fields>
         <Field name="head" type="NodoCliente" visibility="private"/>
         <Field name="actual" type="NodoCliente" visibility="private"/>
@@ -221,14 +221,14 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="NoDato" package="listas" visibility="public" xPosition="620.0" yPosition="420.0">
+    <Class name="NoDato" package="listas" visibility="public" xPosition="25.0" yPosition="1024.0">
       <Fields/>
       <Constructors>
         <Constructor visibility="public"/>
       </Constructors>
       <Methods/>
     </Class>
-    <Class name="Nodo" package="listas" visibility="public" xPosition="920.0" yPosition="420.0">
+    <Class name="Nodo" package="listas" visibility="public" xPosition="25.0" yPosition="793.0">
       <Fields>
         <Field name="dato" type="C" visibility="private"/>
         <Field name="next" type="Nodo&lt;C&gt;" visibility="private"/>
@@ -247,7 +247,7 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="NodoCliente" package="listas" visibility="public" xPosition="1220.0" yPosition="420.0">
+    <Class name="NodoCliente" package="listas" visibility="public" xPosition="1220.0" yPosition="345.0">
       <Fields>
         <Field name="dato" type="Cliente" visibility="private"/>
         <Field name="next" type="NodoCliente" visibility="private"/>
@@ -266,7 +266,7 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="Fecha" package="proyectobanco" visibility="public" xPosition="1520.0" yPosition="420.0">
+    <Class name="Fecha" package="proyectobanco" visibility="public" xPosition="2471.0" yPosition="345.0">
       <Fields>
         <Field name="fec_inv" type="String" visibility="private"/>
         <Field name="fec_fin" type="String" visibility="private"/>
@@ -288,7 +288,7 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="IOEstrategia" package="proyectobanco" visibility="public" xPosition="1820.0" yPosition="420.0">
+    <Class name="IOEstrategia" package="proyectobanco" visibility="public" xPosition="874.0" yPosition="236.0">
       <Fields>
         <Field name="nomArchivo" type="String" visibility="private"/>
         <Field name="clientes" type="List" visibility="private"/>
@@ -310,7 +310,7 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="Menu" package="proyectobanco" visibility="public" xPosition="2120.0" yPosition="420.0">
+    <Class name="Menu" package="proyectobanco" visibility="public" xPosition="2101.0" yPosition="615.0">
       <Fields>
         <Field name="fechaInicio" type="String" visibility="private"/>
         <Field name="fechaFin" type="String" visibility="private"/>
@@ -358,7 +358,7 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="ProyectoBanco" package="proyectobanco" visibility="public" xPosition="20.0" yPosition="820.0">
+    <Class name="ProyectoBanco" package="proyectobanco" visibility="public" xPosition="25.0" yPosition="1160.0">
       <Fields/>
       <Constructors/>
       <Methods>
@@ -367,7 +367,7 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="GestorDatos" package="tipoInv" visibility="public" isAbstract="true" xPosition="320.0" yPosition="198.0">
+    <Class name="GestorDatos" package="tipoInv" visibility="public" isAbstract="true" xPosition="337.0" yPosition="498.0">
       <Fields/>
       <Constructors/>
       <Methods>
@@ -388,7 +388,7 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="Monto" package="tipoInv" visibility="public" xPosition="620.0" yPosition="820.0">
+    <Class name="Monto" package="tipoInv" visibility="public" xPosition="555.0" yPosition="909.0">
       <Fields/>
       <Constructors/>
       <Methods>
@@ -397,7 +397,7 @@
         <Method name="getArchivo" returnType="IOEstrategia" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="TipoInversion" package="tipoInv" visibility="public" xPosition="920.0" yPosition="820.0">
+    <Class name="TipoInversion" package="tipoInv" visibility="public" xPosition="836.0" yPosition="680.0">
       <Fields>
         <Field name="datos" type="Lista" visibility="private"/>
         <Field name="filtro" type="ArrayList" visibility="private"/>
@@ -419,7 +419,7 @@
         <Method name="Filtro" returnType="ArrayList" visibility="public"/>
       </Methods>
     </Class>
-    <Interface name="ListaC" package="listas" visibility="public" xPosition="20.0" yPosition="420.0">
+    <Interface name="ListaC" package="listas" visibility="public" xPosition="1220.0" yPosition="1000.0">
       <Methods>
         <Method name="clear" returnType="void" visibility="public"/>
         <Method name="add" returnType="void" visibility="public">

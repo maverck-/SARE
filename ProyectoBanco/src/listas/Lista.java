@@ -2,7 +2,7 @@ package listas;
 
 /**
  *
- * @author Eduardo
+ * @author BSOD
  * @param <C>
  */
 

@@ -7,7 +7,7 @@ package listas;
 
 /**
  *
- * @author Eduardo
+ * @author BSOD
  */
 import java.util.ArrayList;
 

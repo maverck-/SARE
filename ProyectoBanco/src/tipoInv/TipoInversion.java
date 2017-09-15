@@ -15,7 +15,7 @@ import proyectobanco.IOEstrategia;
 
 /**
  *
- * @author Maver
+ * @author BSOD
  */
 public class TipoInversion extends GestorDatos {
 

@@ -7,7 +7,7 @@ package listas;
 
 /**
  *
- * @author Eduardo
+ * @author BSOD
  */
 public class NoDato extends Exception {
 

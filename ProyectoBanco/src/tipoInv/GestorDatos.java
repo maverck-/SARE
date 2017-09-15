@@ -1,10 +1,12 @@
 package tipoInv;
 
-import java.io.IOException;
 import listas.Inversion;
 import java.util.*;
 import proyectobanco.IOEstrategia;
-
+/**
+ *
+ * @author BSOD
+ */
 public abstract class GestorDatos {
 
     public abstract String[][] informe();

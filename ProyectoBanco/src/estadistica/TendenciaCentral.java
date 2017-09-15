@@ -1,13 +1,12 @@
 package estadistica;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import proyectobanco.IOEstrategia;
 import tipoInv.GestorDatos;
 
 /**
  *
- * @author Maver
+ * @author BSOD
  */
 public class TendenciaCentral extends Calculos {
 

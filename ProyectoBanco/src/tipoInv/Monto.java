@@ -10,7 +10,7 @@ import proyectobanco.IOEstrategia;
 
 /**
  *
- * @author Maver
+ * @author BSOD
  */
 public class Monto extends GestorDatos {
 

@@ -2,7 +2,7 @@ package listas;
 
 /**
  *
- * @author Eduardo
+ * @author BSOD
  */
 public class ListaCliente implements ListaC {
 

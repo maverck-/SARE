@@ -6,7 +6,7 @@ import tipoInv.GestorDatos;
 
 /**
  *
- * @author Maver
+ * @author BSOD
  */
 public class Extras extends Calculos {
 

@@ -3,7 +3,7 @@ package proyectobanco;
 
 /**
  *
- * @author Eduardo
+ * @author BSOD
  */
 
 import java.util.Date;
