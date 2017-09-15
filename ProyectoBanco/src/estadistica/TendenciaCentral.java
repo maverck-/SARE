@@ -10,15 +10,15 @@ import tipoInv.GestorDatos;
  * @author Maver
  */
 public class TendenciaCentral extends Calculos {
-    
+
     public TendenciaCentral(GestorDatos g) {
-        super(g);     
+        super(g);
     }
 
     @Override
     public String[][] informe() {
         String[][] d = super.getDatos();
-        
+
         d[0][0] = "Esperanza: \t\t\t";
         super.Esperanza();
 
@@ -35,9 +35,23 @@ public class TendenciaCentral extends Calculos {
 
         d[6][0] = "Media truncada: \t\t";
         super.MediaT();
-        
-        return d; 
-    }   
+
+        for (int i = 0; i < d.length; i++) {
+            for (int j = 0; j < d[0].length; j++) {
+                try {
+                    System.out.print(d[i][j]);
+                } catch (NullPointerException e) {
+                    System.out.print("No Dato");
+                } finally {
+                    System.out.print("|");
+                }
+            }
+            System.out.println("");
+        }
+        System.out.println("");
+
+        return d;
+    }
 
     @Override
     public ArrayList Filtro() {

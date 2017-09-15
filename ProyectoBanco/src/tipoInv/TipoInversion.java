@@ -60,7 +60,7 @@ public class TipoInversion extends GestorDatos {
 
         datos.setFirst();
         while (!datos.eol()) {
-            if (((Inversion) datos.currValue()).getFechas().getInicio().compareTo(i)>=0 && ((Inversion) datos.currValue()).getFechas().getFinal().compareTo(f)<=0) {
+            if (((Inversion) datos.currValue()).getFechas().getInicio().compareTo(i)>=0 && ((Inversion) datos.currValue()).getFechas().getInicio().compareTo(f)<=0) {
                 if (tip.equals("GR")) {
                     entrega.add(datos.currValue());
                 } else {
@@ -85,6 +85,18 @@ public class TipoInversion extends GestorDatos {
             }
             datos.next();
         }
+        Inversion def=new Inversion(0, 0, "GR", 0, 0, "00-ene-0000","00-ene-0000", "00-ene-0000");
+        if (entrega.size() == 0 ) 
+            entrega.add(def);
+        if(filtroTipo[0].size()==0)
+            filtroTipo[0].add(def);
+        if(filtroTipo[1].size()==0)
+            filtroTipo[1].add(def);
+        if(filtroTipo[2].size()==0)
+            filtroTipo[2].add(def);
+        if(filtroTipo[3].size()==0)
+            filtroTipo[3].add(def);
+        
         if (tip.equals("GR")) {
             quickSort(entrega, 0, entrega.size() - 1);
             return entrega;

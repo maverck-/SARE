@@ -29,10 +29,10 @@ public abstract class Calculos extends GestorDatos {
     public Calculos(GestorDatos g) {
         gDatos = g;
         datos = new String[7][2];
-        if (1+ (int)(1.33*Math.log(gDatos.Filtro().size())) > 15) {
+        if (1+ (int)(3.3*Math.log(gDatos.Filtro().size())) > 15) {
             k = 15;
         } else {
-            k = 1+ (int)(1.33*Math.log(gDatos.Filtro().size()));
+            k = 1+ (int)(3.3*Math.log(gDatos.Filtro().size()));
         }
         histograma = new String[k][gDatos.Filtro().size()];
         tabla = new String[k + 1][9];

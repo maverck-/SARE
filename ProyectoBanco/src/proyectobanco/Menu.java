@@ -8,6 +8,7 @@ package proyectobanco;
 import estadistica.TablaHistograma;
 import estadistica.TendenciaCentral;
 import java.io.IOException;
+import static java.lang.Thread.sleep;
 import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -35,7 +36,7 @@ public class Menu extends javax.swing.JFrame {
         initComponents();
         fechaInicio = "";
         fechaFin = "";
-        tipo = "";
+        tipo = null;
         estado = false;
     }
 
@@ -63,7 +64,6 @@ public class Menu extends javax.swing.JFrame {
         depositoAplazo = new javax.swing.JRadioButton();
         jSeparator1 = new javax.swing.JSeparator();
         ejecutar = new javax.swing.JButton();
-        cancelar = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JSeparator();
         bsod = new javax.swing.JLabel();
         fondoInmobiliario = new javax.swing.JRadioButton();
@@ -105,14 +105,6 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
-        cancelar.setBackground(new java.awt.Color(255, 0, 0));
-        cancelar.setText("Cancelar");
-        cancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cancelarActionPerformed(evt);
-            }
-        });
-
         bsod.setText("© BSOD - Todos los derechos reservados");
 
         grupoDeBotones.add(fondoInmobiliario);
@@ -138,14 +130,12 @@ public class Menu extends javax.swing.JFrame {
                 .addGap(10, 10, 10))
             .addGroup(layout.createSequentialGroup()
                 .addGap(100, 100, 100)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                        .addComponent(bsod)
-                        .addComponent(titulo))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(ejecutar)
-                        .addGap(52, 52, 52)
-                        .addComponent(cancelar)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(bsod)
+                    .addComponent(titulo)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGap(62, 62, 62)
+                        .addComponent(ejecutar)))
                 .addContainerGap(100, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(74, 74, 74)
@@ -207,15 +197,15 @@ public class Menu extends javax.swing.JFrame {
                         .addComponent(fondoInmobiliario)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(bonos)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 3, Short.MAX_VALUE)
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 1, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(ejecutar)
-                            .addComponent(cancelar))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jDateF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jSeparator1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jDateF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(148, 148, 148)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ejecutar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(bsod)
                 .addContainerGap())
@@ -225,78 +215,60 @@ public class Menu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ejecutarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ejecutarActionPerformed
+        boolean okfecha = false;
+        boolean okfiltro = false;
+        // TODO add your handling code here:
+        //metodo para iniciar el main
+        //Pedir fechas
         try {
-            // TODO add your handling code here:
-            //metodo para iniciar el main
-
-            //Pedir fechas
             try {
+                if (jDateI.getDate().compareTo(jDateF.getDate()) > 0) {
+                    throw new NullPointerException();
+                }
                 fechaInicio = new SimpleDateFormat("dd-MMM-yyyy").format(jDateI.getDate());
-                System.out.println(fechaInicio);
+                fechaFin = new SimpleDateFormat("dd-MMM-yyyy").format(jDateF.getDate());
+                
+                okfecha = true;
             } catch (NullPointerException e) {
-                JOptionPane.showMessageDialog(null, "Ingrese una fecha de inicio.",
+                okfecha = false;
+                JOptionPane.showMessageDialog(null, "Verifique el ingreso de las fechas.",
                         "¡Cuidado!", JOptionPane.INFORMATION_MESSAGE);
             }
 
             try {
-                fechaFin = new SimpleDateFormat("dd-MMM-yyyy").format(jDateF.getDate());
-                System.out.println(fechaFin);
-            } catch (NullPointerException e) {
-                JOptionPane.showMessageDialog(null, "Ingrese una fecha de fin.",
-                        "¡Cuidado!", JOptionPane.INFORMATION_MESSAGE);
-            }
-            //Obtenemos el tipo de inversión
-            boolean ingresado = false;
-            do {
                 if (fondoMutuo.getModel().isSelected()) {
                     tipo = "FM";
-                    ingresado = true;
                 } else if (depositoAplazo.getModel().isSelected()) {
                     tipo = "DF";
-                    ingresado = true;
                 } else if (fondoInmobiliario.getModel().isSelected()) {
                     tipo = "FI";
-                    ingresado = true;
                 } else if (bonos.getModel().isSelected()) {
                     tipo = "BO";
-                    ingresado = true;
                 } else if (sinFiltro.getModel().isSelected()) {
                     tipo = "GR";
-                    ingresado = true;
                 }
-                if (tipo.equals("")) {
-                    JOptionPane.showMessageDialog(null, "Ingrese un tipo de filtro.",
-                            "¡Cuidado!", JOptionPane.INFORMATION_MESSAGE);
+                if (tipo == null) {
+                    okfiltro = false;
+                    throw new NullPointerException();
+                } else {
+                    okfiltro = true;
                 }
-            } while (!ingresado);
+            } catch (NullPointerException e) {
+                JOptionPane.showMessageDialog(null, "Ingrese un tipo de filtro.",
+                        "¡Cuidado!", JOptionPane.INFORMATION_MESSAGE);
 
-            JOptionPane.showMessageDialog(null, "Su solicitud está siendo procesada"
-                    + "/n ¡NO CANCELE LA OPERACIÓN!",
-                    "Paciencia...", JOptionPane.INFORMATION_MESSAGE);
-            estado = true;
-
-            /*GestorDatos legacy = new TipoInversion("DatosSistemaLegacy.xlsx", fechaInicio, fechaFin, tipo); //Tipo: GR=TipoInversion, FM=Fondos Mutuos, etc.
-        legacy = new TablaHistograma(legacy);
-        String[][] p = legacy.informe();
-        legacy = new TendenciaCentral(legacy);
-        String[][] q = legacy.informe();
-        
-        legacy.getArchivo().Escritura(p, q);*/
-        } catch (NullPointerException e) {
-            System.out.println("Hay un error xD");
+            }
+        } catch (Exception e) {
+            System.out.println("...");
+        } finally {
+            if (okfecha && okfiltro) {
+                estado = true;
+                JOptionPane.showMessageDialog(null, "Su solicitud está siendo procesada...",
+                        "Paciencia...", JOptionPane.INFORMATION_MESSAGE);
+            }
         }
-        /*catch (IOException ex) {
-            Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (NoDato ex) {
-            Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
-        }*/
 
     }//GEN-LAST:event_ejecutarActionPerformed
-
-    private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
-        // TODO add your handling code here:
-        System.exit(0);
-    }//GEN-LAST:event_cancelarActionPerformed
 
     public String getFechaInicio() {
         return fechaInicio;
@@ -309,9 +281,13 @@ public class Menu extends javax.swing.JFrame {
     public String getTipo() {
         return tipo;
     }
-    
-    public boolean getEstado(){
+
+    public boolean getEstado() {
         return estado;
+    }
+
+    public void cambiarEstado() {
+        System.exit(0);
     }
 
     private void fondoMutuoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fondoMutuoActionPerformed
@@ -375,7 +351,6 @@ public class Menu extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton bonos;
     private javax.swing.JLabel bsod;
-    private javax.swing.JButton cancelar;
     private javax.swing.JRadioButton depositoAplazo;
     private javax.swing.JLabel deseaFiltroTipo;
     private javax.swing.JButton ejecutar;
