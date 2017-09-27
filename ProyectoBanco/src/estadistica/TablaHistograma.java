@@ -2,6 +2,7 @@ package estadistica;
 
 import java.io.IOException;
 import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
 import proyectobanco.IOEstrategia;
 import tipoInv.GestorDatos;
@@ -108,7 +109,9 @@ public class TablaHistograma extends Calculos {
     }
 
     public String truncar(double d) {
-        DecimalFormat df = new DecimalFormat("#,######");
+        DecimalFormatSymbols simbolos = new DecimalFormatSymbols();
+        simbolos.setDecimalSeparator('.');
+        DecimalFormat df = new DecimalFormat("#0.00000", simbolos); //entregaba un string del tipo 0,00000 (la coma no dejaba realizar el parseo al escribir en excel
         return df.format(d);
     }
 
