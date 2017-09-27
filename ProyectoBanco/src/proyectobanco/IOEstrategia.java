@@ -121,7 +121,7 @@ public class IOEstrategia {
         String[] fechaVH = fechaV[3].split(":");
         String nfecha = fechaV[2] + "_" + fechaV[1] + "_" + fechaV[5] + "_" + fechaVH[0] + "_" + fechaVH[1] + "_" + fechaVH[2];
         try {
-            FileOutputStream elFichero = new FileOutputStream("InformeEstadístico_" + nfecha + ".xlsx");
+            FileOutputStream elFichero = new FileOutputStream("Informe_Estadístico_" + nfecha + ".xlsx");
             libro.write(elFichero);
             elFichero.close();
         } catch (Exception e) {

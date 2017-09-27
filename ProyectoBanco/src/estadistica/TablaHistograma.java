@@ -75,7 +75,7 @@ public class TablaHistograma extends Calculos {
             tabla[c + 1][8] = truncar(count / n.size() * 100) + "";
         }
 
-        System.out.println("Tabla de frecencias:");
+        System.out.println("Tabla de frecuencias:");
 
         for (int i = 0; i < tabla.length; i++) {
             for (int j = 0; j < tabla[0].length; j++) {

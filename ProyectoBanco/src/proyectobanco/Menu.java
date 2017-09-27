@@ -243,7 +243,7 @@ public class Menu extends javax.swing.JFrame {
                     tipoInversion = "Bonos";
                 } else if (sinFiltro.getModel().isSelected()) {
                     tipo = "GR";
-                    tipoInversion = "Sin filtro por tipo de inversión";
+                    tipoInversion = "Sin filtro ";
                 }
                 if (tipo == null) {
                     okfiltro = false;
@@ -267,7 +267,7 @@ public class Menu extends javax.swing.JFrame {
                         + "\n   Fecha final:             " + fechaFin
                         + "\n   Tipo de inversión: "+tipoInversion
                         + "\n"
-                        + "\nEspere...",
+                        + "\nPor favor, espere...",
                         "¡Paciencia!", JOptionPane.INFORMATION_MESSAGE);
             }
         }

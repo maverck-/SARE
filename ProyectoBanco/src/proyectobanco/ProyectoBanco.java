@@ -14,22 +14,19 @@ import tipoInv.GestorDatos;
 public class ProyectoBanco {
 
     public static void main(String[] args) throws IOException, NoDato, InterruptedException {
-
+        
         Menu x = new Menu();//Generamos el menú
         x.setVisible(true);//Mostramos el menú
-        //Iteración para esperar las respuestas ingresadas a través del menú
-        do {
+
+        do {//Iteración para esperar las respuestas ingresadas a través del menú
             sleep(1000);
             System.out.print(".");
         } while (!x.getEstado());
         //Se comienza a procesar la solicitud
-        System.out.println("\n Su consulta fué realizada para las siguientes fechas:"
-                + "\n"
+        System.out.println("\n Su consulta fué realizada para las siguientes fechas:" + "\n"
                 + "\n   Fecha inicial: " + x.getFechaInicio()
-                + "\n   Fecha final: " + x.getFechaFin()
-                + "\n"
-                + "\n PROCESANDO SOLICITUD..."
-                + "\n");
+                + "\n   Fecha final:   " + x.getFechaFin() + "\n"
+                + "\n PROCESANDO SOLICITUD..." + "\n");
 
         x.setVisible(false);//Ocultamos el menú
         //Se solicita el filtro de datos según los parámetros ingresados
