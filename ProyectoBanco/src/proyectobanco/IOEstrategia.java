@@ -113,7 +113,7 @@ public class IOEstrategia {
                 if (j == 1) {
                     celda.setCellValue(Double.parseDouble(q[i][j].trim()));
                 }
-                hoja1.autoSizeColumn(j);
+                hoja1.autoSizeColumn(j);//formato
             }
         }
         java.util.Date fecha = new Date();
