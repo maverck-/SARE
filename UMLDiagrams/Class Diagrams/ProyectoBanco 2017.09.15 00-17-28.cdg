@@ -2,7 +2,7 @@
 
 <ClassDiagram name="ProyectoBanco">
   <ClassDiagramComponents>
-    <Class name="Calculos" package="estadistica" visibility="public" isAbstract="true" xPosition="25.0" yPosition="43.0">
+    <Class name="Calculos" package="estadistica" visibility="public" isAbstract="true" xPosition="680.0" yPosition="89.0">
       <Fields>
         <Field name="gDatos" type="GestorDatos" visibility="private"/>
         <Field name="Varianza" type="double" visibility="private"/>
@@ -36,20 +36,7 @@
         <Method name="getTabla" returnType="String[][]" visibility="protected"/>
       </Methods>
     </Class>
-    <Class name="Extras" package="estadistica" visibility="public" xPosition="299.0" yPosition="265.0">
-      <Fields/>
-      <Constructors>
-        <Constructor visibility="public">
-          <Argument type="GestorDatos" name="g"/>
-        </Constructor>
-      </Constructors>
-      <Methods>
-        <Method name="Filtro" returnType="ArrayList" visibility="public"/>
-        <Method name="getArchivo" returnType="IOEstrategia" visibility="public"/>
-        <Method name="informe" returnType="String[][]" visibility="public"/>
-      </Methods>
-    </Class>
-    <Class name="TablaHistograma" package="estadistica" visibility="public" xPosition="299.0" yPosition="43.0">
+    <Class name="TablaHistograma" package="estadistica" visibility="public" xPosition="816.0" yPosition="223.0">
       <Fields/>
       <Constructors>
         <Constructor visibility="public">
@@ -65,7 +52,7 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="TendenciaCentral" package="estadistica" visibility="public" xPosition="551.0" yPosition="221.0">
+    <Class name="TendenciaCentral" package="estadistica" visibility="public" xPosition="590.0" yPosition="223.0">
       <Fields/>
       <Constructors>
         <Constructor visibility="public">
@@ -100,7 +87,7 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="Inversion" package="listas" visibility="public" xPosition="1467.0" yPosition="170.0">
+    <Class name="Inversion" package="listas" visibility="public" xPosition="1627.0" yPosition="-36.0">
       <Fields>
         <Field name="id_inv" type="int" visibility="private"/>
         <Field name="tipo_inv" type="String" visibility="private"/>
@@ -131,7 +118,7 @@
         <Method name="getTipo" returnType="String" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="InversionCliente" package="listas" visibility="public" xPosition="2039.0" yPosition="24.0">
+    <Class name="InversionCliente" package="listas" visibility="public" xPosition="947.0" yPosition="-124.0">
       <Fields>
         <Field name="id_inv" type="int" visibility="private"/>
         <Field name="tipo_inv" type="String" visibility="private"/>
@@ -157,7 +144,7 @@
         <Method name="getCierre" returnType="Date" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="Lista" package="listas" visibility="public" xPosition="1149.0" yPosition="585.0">
+    <Class name="Lista" package="listas" visibility="public" xPosition="432.0" yPosition="310.0">
       <Fields>
         <Field name="head" type="Nodo&lt;C&gt;" visibility="private"/>
         <Field name="actual" type="Nodo&lt;C&gt;" visibility="private"/>
@@ -266,7 +253,7 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="Fecha" package="proyectobanco" visibility="public" xPosition="2259.0" yPosition="340.0">
+    <Class name="Fecha" package="proyectobanco" visibility="public" xPosition="1627.0" yPosition="385.0">
       <Fields>
         <Field name="fec_inv" type="String" visibility="private"/>
         <Field name="fec_fin" type="String" visibility="private"/>
@@ -288,7 +275,7 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="IOEstrategia" package="proyectobanco" visibility="public" xPosition="853.0" yPosition="221.0">
+    <Class name="IOEstrategia" package="proyectobanco" visibility="public" xPosition="353.0" yPosition="412.0">
       <Fields>
         <Field name="nomArchivo" type="String" visibility="private"/>
         <Field name="clientes" type="List" visibility="private"/>
@@ -310,7 +297,7 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="Menu" package="proyectobanco" visibility="public" xPosition="1889.0" yPosition="599.0">
+    <Class name="Menu" package="proyectobanco" visibility="public" xPosition="131.0" yPosition="153.0">
       <Fields>
         <Field name="fechaInicio" type="String" visibility="private"/>
         <Field name="fechaFin" type="String" visibility="private"/>
@@ -358,7 +345,7 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="ProyectoBanco" package="proyectobanco" visibility="public" xPosition="25.0" yPosition="1049.0">
+    <Class name="ProyectoBanco" package="proyectobanco" visibility="public" xPosition="131.0" yPosition="109.0">
       <Fields/>
       <Constructors/>
       <Methods>
@@ -367,7 +354,7 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="GestorDatos" package="tipoInv" visibility="public" isAbstract="true" xPosition="299.0" yPosition="466.0">
+    <Class name="GestorDatos" package="tipoInv" visibility="public" isAbstract="true" xPosition="296.0" yPosition="109.0">
       <Fields/>
       <Constructors/>
       <Methods>
@@ -388,16 +375,7 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="Monto" package="tipoInv" visibility="public" xPosition="382.0" yPosition="758.0">
-      <Fields/>
-      <Constructors/>
-      <Methods>
-        <Method name="informe" returnType="String[][]" visibility="public"/>
-        <Method name="Filtro" returnType="ArrayList" visibility="public"/>
-        <Method name="getArchivo" returnType="IOEstrategia" visibility="public"/>
-      </Methods>
-    </Class>
-    <Class name="TipoInversion" package="tipoInv" visibility="public" xPosition="776.0" yPosition="680.0">
+    <Class name="TipoInversion" package="tipoInv" visibility="public" xPosition="86.0" yPosition="223.0">
       <Fields>
         <Field name="datos" type="Lista" visibility="private"/>
         <Field name="filtro" type="ArrayList" visibility="private"/>
@@ -419,7 +397,7 @@
         <Method name="Filtro" returnType="ArrayList" visibility="public"/>
       </Methods>
     </Class>
-    <Interface name="ListaC" package="listas" visibility="public" xPosition="1220.0" yPosition="1000.0">
+    <Interface name="ListaC" package="listas" visibility="public" xPosition="931.0" yPosition="537.0">
       <Methods>
         <Method name="clear" returnType="void" visibility="public"/>
         <Method name="add" returnType="void" visibility="public">
@@ -439,39 +417,34 @@
     </Interface>
   </ClassDiagramComponents>
   <ClassDiagramRelations>
-    <UseRelation source="estadistica.Calculos" target="tipoInv.GestorDatos" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <IsRelation name="is" source="estadistica.TablaHistograma" target="estadistica.Calculos"/>
-    <UseRelation source="estadistica.TendenciaCentral" target="proyectobanco.IOEstrategia" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="actual" source="listas.ListaCliente" target="listas.NodoCliente" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="tipoInv.TipoInversion" target="proyectobanco.IOEstrategia" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="estadistica.Extras" target="proyectobanco.IOEstrategia" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <IsRelation name="is" source="tipoInv.Monto" target="tipoInv.GestorDatos"/>
-    <UseRelation source="listas.NodoCliente" target="listas.NodoCliente" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="tipoInv.GestorDatos" target="proyectobanco.IOEstrategia" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="listas.Cliente" target="listas.InversionCliente" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <IsRelation name="is" source="estadistica.TendenciaCentral" target="estadistica.Calculos"/>
-    <UseRelation source="listas.Inversion" target="proyectobanco.Fecha" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <IsRelation name="is" source="estadistica.Calculos" target="tipoInv.GestorDatos"/>
-    <HasRelation name="next" source="listas.NodoCliente" target="listas.NodoCliente" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="listas.ListaCliente" target="listas.Cliente" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="archivo" source="tipoInv.TipoInversion" target="proyectobanco.IOEstrategia" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="dato" source="listas.NodoCliente" target="listas.Cliente" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="gDatos" source="estadistica.Calculos" target="tipoInv.GestorDatos" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="listas.ListaCliente" target="listas.InversionCliente" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="fec" source="listas.InversionCliente" target="proyectobanco.Fecha" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
     <UseRelation source="listas.NodoCliente" target="listas.Cliente" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <IsRelation name="is" source="estadistica.Extras" target="estadistica.Calculos"/>
-    <UseRelation source="listas.Nodo" target="listas.Nodo" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="inversiones" source="listas.Cliente" target="listas.Inversion" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Inversion&gt;"/>
-    <HasRelation name="inversiones" source="proyectobanco.IOEstrategia" target="listas.Lista" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="Lista"/>
     <UseRelation source="estadistica.TablaHistograma" target="proyectobanco.IOEstrategia" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="tipoInv.Monto" target="proyectobanco.IOEstrategia" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="listas.Lista" target="listas.ListaC"/>
+    <HasRelation name="inversiones" source="proyectobanco.IOEstrategia" target="listas.Lista" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="Lista"/>
+    <UseRelation source="listas.ListaCliente" target="listas.Cliente" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="estadistica.Calculos" target="tipoInv.GestorDatos"/>
+    <UseRelation source="tipoInv.GestorDatos" target="proyectobanco.IOEstrategia" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="listas.NodoCliente" target="listas.NodoCliente" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="estadistica.Calculos" target="tipoInv.GestorDatos" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="inversiones" source="listas.Cliente" target="listas.Inversion" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Inversion&gt;"/>
+    <HasRelation name="dato" source="listas.NodoCliente" target="listas.Cliente" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="actual" source="listas.ListaCliente" target="listas.NodoCliente" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="listas.ListaCliente" target="listas.InversionCliente" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="listas.Inversion" target="proyectobanco.Fecha" sourceCardinality="1..1" targetCardinality="1..1"/>
     <HasRelation name="datos" source="tipoInv.TipoInversion" target="listas.Lista" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="Lista"/>
-    <IsRelation name="is" source="tipoInv.TipoInversion" target="tipoInv.GestorDatos"/>
-    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="listas.ListaCliente" target="listas.ListaC"/>
+    <UseRelation source="listas.Cliente" target="listas.InversionCliente" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="gDatos" source="estadistica.Calculos" target="tipoInv.GestorDatos" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="estadistica.TendenciaCentral" target="estadistica.Calculos"/>
+    <HasRelation name="next" source="listas.NodoCliente" target="listas.NodoCliente" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="fec" source="listas.InversionCliente" target="proyectobanco.Fecha" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="listas.Nodo" target="listas.Nodo" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="proyectobanco.IOEstrategia" target="listas.Lista" sourceCardinality="1..1" targetCardinality="1..1"/>
     <HasRelation name="fec" source="listas.Inversion" target="proyectobanco.Fecha" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
     <HasRelation name="head" source="listas.ListaCliente" target="listas.NodoCliente" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="proyectobanco.IOEstrategia" target="listas.Lista" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="estadistica.TablaHistograma" target="estadistica.Calculos"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="listas.ListaCliente" target="listas.ListaC"/>
+    <IsRelation name="is" source="tipoInv.TipoInversion" target="tipoInv.GestorDatos"/>
+    <UseRelation name="" source="estadistica.TendenciaCentral" target="proyectobanco.IOEstrategia" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="archivo" source="tipoInv.TipoInversion" target="proyectobanco.IOEstrategia" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="tipoInv.TipoInversion" target="proyectobanco.IOEstrategia" sourceCardinality="1..1" targetCardinality="1..1"/>
   </ClassDiagramRelations>
 </ClassDiagram>
