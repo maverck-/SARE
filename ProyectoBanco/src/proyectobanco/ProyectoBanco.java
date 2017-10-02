@@ -15,6 +15,10 @@ public class ProyectoBanco {
 
     public static void main(String[] args) throws IOException, NoDato, InterruptedException {
         
+        
+        //Cambios
+        
+        
         Menu x = new Menu();//Generamos el menú
         x.setVisible(true);//Mostramos el menú
 
@@ -41,5 +45,10 @@ public class ProyectoBanco {
         legacy.getArchivo().Escritura(p, q);
         //Se finaliza la aplicación (menú)
         x.cambiarEstado();
+        
+        
+        
+        
+        //Cambios 2
     }
 }
