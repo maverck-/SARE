@@ -85,7 +85,7 @@ public class TipoInversion extends GestorDatos {
             }
             datos.next();
         }
-        Inversion def=new Inversion(0, 0, "GR", 0, 0, "00-ene-0000","00-ene-0000", "00-ene-0000");
+        Inversion def=new Inversion( 0, "GR", 0, 0, "00-ene-0000","00-ene-0000", "00-ene-0000");
         if (entrega.size() == 0 ) 
             entrega.add(def);
         if(filtroTipo[0].size()==0)

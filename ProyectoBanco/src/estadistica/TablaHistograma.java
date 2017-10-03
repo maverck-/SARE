@@ -1,6 +1,5 @@
 package estadistica;
 
-import java.io.IOException;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
@@ -18,6 +17,7 @@ public class TablaHistograma extends Calculos {
     }
 
     public String[][] informe() {
+        super.getgDatos().informe();
         ArrayList n = Filtro();
         String[][] tabla = super.getTabla();
         String[][] histograma = super.getHistograma();

@@ -5,7 +5,6 @@ package listas;
  * @author BSOD
  * @param <C>
  */
-
 public class Lista<C> implements ListaC {
 
     private Nodo<C> head;

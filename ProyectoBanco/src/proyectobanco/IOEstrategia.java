@@ -1,12 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package proyectobanco;
 
 import listas.NoDato;
-import listas.Cliente;
 import listas.Lista;
 import listas.Inversion;
 import java.io.FileInputStream;
@@ -29,12 +23,10 @@ import java.util.Date;
 public class IOEstrategia {
 
     private String nomArchivo;
-    private List clientes;
     private Lista inversiones;
 
     public IOEstrategia(String nombre) throws NoDato, IOException, NumberFormatException {
         nomArchivo = nombre;
-        clientes = new ArrayList();
         inversiones = new Lista();
     }
 
@@ -58,14 +50,9 @@ public class IOEstrategia {
                 } catch (NoDato e) {
                     df.add(null);
                 }
-
             }
             if (j != 0) {
-                Cliente c = new Cliente(df.get(1), df.get(2));
-                if (!clientes.contains(c)) {
-                    clientes.add(c);
-                }
-                inversiones.add(new Inversion(clientes.indexOf(c), (int) Double.parseDouble(df.get(0)), df.get(3), (int) Double.parseDouble(df.get(4)), Double.parseDouble(df.get(5)), df.get(7), df.get(8), df.get(9)));
+                inversiones.add(new Inversion( (int) Double.parseDouble(df.get(0)), df.get(3), (int) Double.parseDouble(df.get(4)), Double.parseDouble(df.get(5)), df.get(7), df.get(8), df.get(9)));
             }
             j++;
         }
@@ -113,7 +100,7 @@ public class IOEstrategia {
                 if (j == 1) {
                     celda.setCellValue(Double.parseDouble(q[i][j].trim()));
                 }
-                hoja1.autoSizeColumn(j);//formato
+                hoja1.autoSizeColumn(j);
             }
         }
         java.util.Date fecha = new Date();

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package listas;
 
 /**
@@ -21,10 +16,8 @@ public class Inversion {
     private double mon_rec;
     private Fecha fec;
     private boolean inv_cerrada;
-    private int indexCliente;
 
-    public Inversion(int index, int id, String tipo, int montoInicial, double tasa, String fi, String ff, String fc) {
-        indexCliente = index;
+    public Inversion( int id, String tipo, int montoInicial, double tasa, String fi, String ff, String fc) {
         id_inv = id;
         tipo_inv = tipo;
         mon_inv = montoInicial;

@@ -46,9 +46,5 @@ public class ProyectoBanco {
         //Se finaliza la aplicación (menú)
         x.cambiarEstado();
         
-        
-        
-        
-        //Cambios 2
     }
 }
